@@ -11,5 +11,12 @@ config_version=5
 [application]
 
 config/name="AI Ethics Serious Game"
+run/main_scene="uid://xyu1a31el25c"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
