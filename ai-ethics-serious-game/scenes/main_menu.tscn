@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://xyu1a31el25c"]
+[gd_scene load_steps=3 format=3 uid="uid://xyu1a31el25c"]
 
 [ext_resource type="Texture2D" uid="uid://beh1tdwmb1ns5" path="res://assets/esboco.png" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://gl8sqqwrxpif" path="res://scripts/main_menu/start_button.gd" id="2_ekxnf"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -10,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BackgroundImage" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,3 +19,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_l6cm7")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 310.0
+offset_right = 507.0
+offset_bottom = 373.0
+text = "START"
+script = ExtResource("2_ekxnf")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="on_button_pressed"]
