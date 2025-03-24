@@ -29,7 +29,7 @@ func _ready() -> void:
 	progress_label.text = "Progress: " + str(current_entity_id) + "/" + \
 						str(entities_count)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not is_entity_visible:
 		setup_entity(entities_remaining[current_entity_id])
 	

@@ -1,10 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=14 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
-[ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/game.png" id="1_cd1xg"]
+[ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/sprites/backgrounds/game.png" id="1_cd1xg"]
 [ext_resource type="FontFile" uid="uid://c0rkxsutw6wpa" path="res://assets/fonts/Pixel Square 10.ttf" id="2_t18mc"]
 [ext_resource type="FontFile" uid="uid://c06okaskmctv1" path="res://assets/fonts/Pixel Square Bold10.ttf" id="3_843q2"]
+[ext_resource type="Texture2D" uid="uid://bq1u8j51cavyb" path="res://assets/sprites/accept_button/accept_button.tres" id="4_4p75b"]
+[ext_resource type="Texture2D" uid="uid://rf5wxqp1jvl0" path="res://assets/sprites/accept_button/accept_btn.png" id="4_bhu28"]
 [ext_resource type="PackedScene" uid="uid://dv67oa1x7ubls" path="res://scenes/entity.tscn" id="5_r4wdr"]
+[ext_resource type="Texture2D" uid="uid://dd21mstu6o8wh" path="res://assets/sprites/decline_button/decline_button.tres" id="7_y8ti4"]
+[ext_resource type="Texture2D" uid="uid://cmvsrrwks5xlg" path="res://assets/sprites/decline_button/decline_btn.png" id="8_astit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8ti4"]
+atlas = ExtResource("4_bhu28")
+region = Rect2(204, 0, 102, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p75b"]
+atlas = ExtResource("4_bhu28")
+region = Rect2(102, 0, 102, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5wbv"]
+atlas = ExtResource("8_astit")
+region = Rect2(204, 0, 102, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6ikc"]
+atlas = ExtResource("8_astit")
+region = Rect2(102, 0, 102, 44)
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_5rfim")
@@ -26,94 +46,102 @@ texture = ExtResource("1_cd1xg")
 [node name="AnswerLabel" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 388.0
-offset_top = 207.0
-offset_right = 881.0
-offset_bottom = 312.0
+offset_top = 212.0
+offset_right = 889.0
+offset_bottom = 343.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_t18mc")
 theme_override_font_sizes/font_size = 20
-text = "This is an example text!
-It can have multiple lines too
+text = "This is an example text! It can have multiple lines too.
 Here we will show the answer to the question below, for the player to choose if it is acceptable or not :)"
+horizontal_alignment = 3
 autowrap_mode = 2
 text_overrun_behavior = 1
 
 [node name="QuestionLabel" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 388.0
-offset_top = 404.0
-offset_right = 881.0
-offset_bottom = 544.0
+offset_top = 410.0
+offset_right = 887.0
+offset_bottom = 560.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_t18mc")
 theme_override_font_sizes/font_size = 20
-text = "This is an example text!
-It can have multiple lines too
+text = "This is an example text! It can have multiple lines too.
 Here we will show an ethical question, woooo
 "
+horizontal_alignment = 3
 autowrap_mode = 2
 text_overrun_behavior = 1
 
-[node name="AcceptButton" type="Button" parent="UI"]
+[node name="AcceptButton" type="TextureButton" parent="UI"]
 layout_mode = 0
-offset_left = 215.0
-offset_top = 428.0
-offset_right = 307.0
+offset_left = 196.0
+offset_top = 425.0
+offset_right = 298.0
 offset_bottom = 469.0
-text = "ACCEPT"
-
-[node name="DeclineButton" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 215.0
-offset_top = 491.0
-offset_right = 307.0
-offset_bottom = 532.0
-text = "DECLINE"
+texture_normal = ExtResource("4_4p75b")
+texture_pressed = SubResource("AtlasTexture_y8ti4")
+texture_hover = SubResource("AtlasTexture_4p75b")
 
 [node name="TitleAnswerLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 381.0
-offset_top = 185.0
-offset_right = 530.0
-offset_bottom = 208.0
+offset_left = 388.0
+offset_top = 189.0
+offset_right = 537.0
+offset_bottom = 212.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_843q2")
+theme_override_font_sizes/font_size = 20
 text = "ANSWER"
 
 [node name="TitleQuestionLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 381.0
-offset_top = 380.0
-offset_right = 530.0
-offset_bottom = 403.0
+offset_left = 388.0
+offset_top = 387.0
+offset_right = 537.0
+offset_bottom = 410.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_843q2")
+theme_override_font_sizes/font_size = 20
 text = "QUESTION"
 
-[node name="EntitySprite" type="Sprite2D" parent="UI"]
-position = Vector2(260, 292.5)
-scale = Vector2(1.125, 1.46094)
+[node name="EntitySprite" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(247.5, 288.25)
+scale = Vector2(1.22656, 1.23047)
 
 [node name="TitleEntityLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 188.0
-offset_top = 185.0
-offset_right = 337.0
-offset_bottom = 208.0
+offset_left = 172.0
+offset_top = 189.0
+offset_right = 321.0
+offset_bottom = 212.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_843q2")
+theme_override_font_sizes/font_size = 20
 text = "ENTITY"
 
 [node name="ProgressLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 809.0
-offset_top = 114.0
-offset_right = 1135.0
-offset_bottom = 137.0
+offset_left = 675.0
+offset_top = 108.0
+offset_right = 1001.0
+offset_bottom = 134.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_843q2")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 20
 text = "Progress: 0/5"
+vertical_alignment = 1
+
+[node name="DeclineButton" type="TextureButton" parent="UI"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 490.0
+offset_right = 298.0
+offset_bottom = 534.0
+texture_normal = ExtResource("7_y8ti4")
+texture_pressed = SubResource("AtlasTexture_o5wbv")
+texture_hover = SubResource("AtlasTexture_s6ikc")
 
 [node name="Entities" type="Node2D" parent="."]
 visible = false
@@ -122,13 +150,13 @@ visible = false
 entity_name = "TestB0T"
 question_text = "Is it okay to eat 1 hotdog per week?"
 answer_text = "What do you mean, I eat 2..."
-sprite_path = "uid://c6fai7ks30kvn"
+sprite_path = "uid://dqcoljdjxtsko"
 
 [node name="Entity2" parent="Entities" instance=ExtResource("5_r4wdr")]
 entity_name = "A.I. 2.0"
 question_text = "Given a rock, a sheet of paper and some scissors, what game would you create?"
 answer_text = "Rock, paper,... scissors?"
-sprite_path = "uid://c6fai7ks30kvn"
+sprite_path = "uid://dhvocp1i4jnkm"
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/DeclineButton" to="." method="_on_decline_button_pressed"]

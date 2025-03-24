@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://xyu1a31el25c"]
 
-[ext_resource type="Texture2D" uid="uid://beh1tdwmb1ns5" path="res://assets/esboco.png" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://beh1tdwmb1ns5" path="res://assets/sprites/backgrounds/esboco.png" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://gl8sqqwrxpif" path="res://scripts/main_menu/start_button.gd" id="2_ekxnf"]
 
 [node name="UI" type="Control"]

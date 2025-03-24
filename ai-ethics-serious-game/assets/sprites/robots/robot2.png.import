@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beh1tdwmb1ns5"
-path="res://.godot/imported/esboco.png-a14f50be789b1a6a07ba84b2afb7a017.ctex"
+uid="uid://dqcoljdjxtsko"
+path="res://.godot/imported/robot2.png-85c0708aac83b07ba8a5d5c446657111.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/esboco.png"
-dest_files=["res://.godot/imported/esboco.png-a14f50be789b1a6a07ba84b2afb7a017.ctex"]
+source_file="res://assets/sprites/robots/robot2.png"
+dest_files=["res://.godot/imported/robot2.png-85c0708aac83b07ba8a5d5c446657111.ctex"]
 
 [params]
 
