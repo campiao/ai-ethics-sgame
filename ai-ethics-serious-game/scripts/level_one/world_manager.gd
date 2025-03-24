@@ -5,7 +5,7 @@ extends Node2D
 @onready var question_label: Label = $UI/QuestionLabel
 
 # Entity nodes
-@onready var entity_sprite: Sprite2D = $UI/EntitySprite
+@onready var entity_sprite: AnimatedSprite2D = $UI/EntitySprite
 @onready var title_entity_label: Label = $UI/TitleEntityLabel
 
 # Progress label
@@ -35,7 +35,8 @@ func _process(_delta: float) -> void:
 	
 func  setup_entity(entity_data: EntityType) -> void:
 	# Display entity data
-	entity_sprite.texture = load(entity_data.sprite_path)
+	entity_sprite.sprite_frames = entity_data.get_child(0).sprite_frames
+	entity_sprite.play("default")
 	answer_label.text = entity_data.answer_text
 	question_label.text = entity_data.question_text
 	title_entity_label.text = entity_data.entity_name

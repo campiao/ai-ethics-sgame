@@ -5,4 +5,4 @@ class_name EntityType
 
 @export_multiline var question_text : String = ""
 @export_multiline var answer_text : String = ""
-@export_file("*.png") var sprite_path := ""
+@export var is_answer_correct : bool = false
