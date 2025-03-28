@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=68 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/sprites/backgrounds/game.png" id="1_cd1xg"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cmvsrrwks5xlg" path="res://assets/sprites/decline_button/decline_btn.png" id="8_astit"]
 [ext_resource type="Texture2D" uid="uid://cqte82qp8p7di" path="res://assets/sprites/robots/robot2/robot2.png" id="10_o5wbv"]
 [ext_resource type="Texture2D" uid="uid://bvwqidwahupa1" path="res://assets/sprites/robots/robot3/robot3.png" id="11_s6ikc"]
+[ext_resource type="Texture2D" uid="uid://bwctnn03pxawh" path="res://assets/sprites/robots/robot4/robot4.png" id="12_036lt"]
+[ext_resource type="Texture2D" uid="uid://dlqctt8jucxih" path="res://assets/sprites/robots/robot1/robot.png" id="13_nlxio"]
+[ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="14_xrbqg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8ti4"]
 atlas = ExtResource("4_bhu28")
@@ -193,6 +196,184 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s2d1"]
+atlas = ExtResource("12_036lt")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yccm"]
+atlas = ExtResource("12_036lt")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l6cj"]
+atlas = ExtResource("12_036lt")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hifet"]
+atlas = ExtResource("12_036lt")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egele"]
+atlas = ExtResource("12_036lt")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7orf"]
+atlas = ExtResource("12_036lt")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln5a5"]
+atlas = ExtResource("12_036lt")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0pex"]
+atlas = ExtResource("12_036lt")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3crtr"]
+atlas = ExtResource("12_036lt")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gujx4"]
+atlas = ExtResource("12_036lt")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq8t7"]
+atlas = ExtResource("12_036lt")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yygh"]
+atlas = ExtResource("12_036lt")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iuuf"]
+atlas = ExtResource("12_036lt")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w841"]
+atlas = ExtResource("12_036lt")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mjax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s2d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yccm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l6cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hifet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egele")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7orf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln5a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0pex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3crtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gujx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq8t7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yygh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iuuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w841")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mjax"]
+atlas = ExtResource("13_nlxio")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1cgr"]
+atlas = ExtResource("13_nlxio")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px03k"]
+atlas = ExtResource("13_nlxio")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvr2r"]
+atlas = ExtResource("13_nlxio")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fg53"]
+atlas = ExtResource("13_nlxio")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f04a"]
+atlas = ExtResource("13_nlxio")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3mho"]
+atlas = ExtResource("13_nlxio")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mm4s5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mjax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1cgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px03k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvr2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fg53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f04a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3mho")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm4s5"]
+atlas = ExtResource("14_xrbqg")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s6ikc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm4s5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_5rfim")
 
@@ -222,7 +403,8 @@ theme_override_font_sizes/font_size = 20
 text = "This is an example text! It can have multiple lines too.
 Here we will show the answer to the question below, for the player to choose if it is acceptable or not :)"
 autowrap_mode = 2
-text_overrun_behavior = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="QuestionLabel" type="Label" parent="UI"]
 layout_mode = 0
@@ -238,6 +420,8 @@ Here we will show an ethical question, woooo
 "
 autowrap_mode = 2
 text_overrun_behavior = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="AcceptButton" type="TextureButton" parent="UI"]
 layout_mode = 0
@@ -318,6 +502,9 @@ visible = false
 entity_name = "TestB0T"
 question_text = "Is it okay to eat 1 hotdog per week?"
 answer_text = "What do you mean, I eat 2..."
+explanation_text = "This is my explanation text!!"
+correct_choice_text = "Yayy you got it right"
+wrong_choice_text = "OHHH NOOOO"
 
 [node name="AnimatedSprite2D" parent="Entities/Entity1" index="0"]
 sprite_frames = SubResource("SpriteFrames_o5wbv")
@@ -326,12 +513,45 @@ sprite_frames = SubResource("SpriteFrames_o5wbv")
 entity_name = "A.I. 2.0"
 question_text = "Given a rock, a sheet of paper and some scissors, what game would you create?"
 answer_text = "Rock, paper,... scissors?"
+explanation_text = "Some boooooooring explanations"
+correct_choice_text = "WOOOOPIE"
+wrong_choice_text = "NOOOPE"
 
 [node name="AnimatedSprite2D" parent="Entities/Entity2" index="0"]
 sprite_frames = SubResource("SpriteFrames_3s2d1")
+
+[node name="Entity3" parent="Entities" instance=ExtResource("5_r4wdr")]
+question_text = "MUSSHIMAISI asdasd asd"
+answer_text = "asdad fdfsdg asd "
+is_answer_correct = true
+explanation_text = "asfgjtrsdh "
+correct_choice_text = "asfsdds"
+wrong_choice_text = "asda"
+
+[node name="AnimatedSprite2D" parent="Entities/Entity3" index="0"]
+sprite_frames = SubResource("SpriteFrames_4mjax")
+
+[node name="Entity4" parent="Entities" instance=ExtResource("5_r4wdr")]
+entity_name = "adad"
+
+[node name="AnimatedSprite2D" parent="Entities/Entity4" index="0"]
+sprite_frames = SubResource("SpriteFrames_mm4s5")
+
+[node name="BossEntity" parent="." instance=ExtResource("5_r4wdr")]
+visible = false
+entity_name = "BOSS"
+
+[node name="AnimatedSprite2D" parent="BossEntity" index="0"]
+position = Vector2(248, 288)
+scale = Vector2(0.817708, 0.822917)
+sprite_frames = SubResource("SpriteFrames_s6ikc")
+autoplay = "default"
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/DeclineButton" to="." method="_on_decline_button_pressed"]
 
 [editable path="Entities/Entity1"]
 [editable path="Entities/Entity2"]
+[editable path="Entities/Entity3"]
+[editable path="Entities/Entity4"]
+[editable path="BossEntity"]
