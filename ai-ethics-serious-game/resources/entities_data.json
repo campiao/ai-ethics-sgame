@@ -1,26 +1,26 @@
 {
 	"0":{
-		"question_text" : "Is it okay to eat 1 hotdog per week",
-		"answer_text" : "What do you mean, I eat 2...",
-		"is_answer_correct" : true,
-		"explanation_text" : "This is my explanation text",
+		"question_text" : "If an AI model has been trained with millions of examples of medical diagnoses, can it replace human doctors in making decisions?",
+		"answer_text" : "Yes, with a large data set and advanced algorithms, AI can make medical decisions more accurately than human doctors.",
+		"is_answer_correct" : false,
+		"explanation_text" : "AI does not replace human decision-making. Factors such as clinical context, ethics and individual interpretation are still essential in medicine. Also, AI can have biases based on training data, leading to wrong diagnoses."
 	},
 	"1":{
-		"question_text":"some text",
-		"answer_text" : "What do you mean, I eat 2...",
-		"is_answer_correct" : false,
-		"explanation_text" : "This is my explanation text",
+		"question_text":"If an AI chatbot can answer a question with confidence, does that mean the information is correct?",
+		"answer_text" : "Not necessarily, an AI can generate convincing answers but still contain errors or made-up information.",
+		"is_answer_correct" : true,
+		"explanation_text" : "Language models may seem very reliable, but they can generate incorrect answers. It is always necessary to check information with verified sources"
 	},
 	"2":{
-		"question_text":"Third robot question",
-		"answer_text" : "Yappa yappa yappaaaa",
+		"question_text":"If an AI creates an image that consists of elements from several different sources, does that mean that the image is 100% original?",
+		"answer_text" : "Not necessarily, as AI can recombine elements of pre-existing images.",
 		"is_answer_correct" : true,
-		"explanation_text" : "Explanation time!!!",
+		"explanation_text" : "Image generation models often use references from existing databases, which can produce creations that are not entirely original."
 	},
 	"3":{
-		"question_text":"Forth robot question",
-		"answer_text" : "I am tired boss",
-		"is_answer_correct" : true,
-		"explanation_text" : "No more explanations, please",
-	},
+		"question_text":"If an AI has been trained to analyse curriculums and select candidates for a position, does that mean it will always be fair and impartial?",
+		"answer_text" : "Yes, an AI only analyses objective curriculum data, without bias or preference.",
+		"is_answer_correct" : false,
+		"explanation_text" : "AI systems can take on biases from the data they have been trained on. If historical data reflects discrimination (for example, fewer people hired from a certain group), AI can reproduce these patterns in an automated way."
+	}
 }
