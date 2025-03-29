@@ -22,15 +22,29 @@ extends Node2D
 @onready var accept_button: TextureButton = $UI/AcceptButton
 @onready var decline_button: TextureButton = $UI/DeclineButton
 
-
+# Entities
 var current_entity_id := -1
 var entities_count := -1
 
+# Flow control
 var is_entity_visible := false
 var is_tutorial_done := false
 var is_on_after_selection := true
 
+# Text animation speed
 var text_update_speed := 2.0
+
+# Boss flavor text
+var correct_choice_flavor := [
+	"You got it right, good job!",
+	"Nice, that was a good one!",
+	"Correct! I am proud of you.",
+]
+var wrong_choice_flavor := [
+	"That's not correct, check above to see why!",
+	"Wrong! It's okay, you will get it the next time!",
+	"Incorrect option! Let me tell you why...",
+]
 
 func _ready() -> void:
 	#var first_entity := entities_remaining[0]
@@ -43,6 +57,7 @@ func _ready() -> void:
 						
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
+	set_entities_data()
 	
 func _process(_delta: float) -> void:
 	if not is_entity_visible:
@@ -59,7 +74,24 @@ func _process(_delta: float) -> void:
 			answer_label.visible_ratio += \
 			1.0/answer_label.text.length()/text_update_speed
 	
+func set_entities_data() -> void:
+	var data = StaticData.entities_dict
+	var num_ent = len(data.keys())
 	
+	# ALERT: Something is causing the editor to lag can consume memory on
+	# "run current scene", not sure if it is this function
+	# Only happens on this scene ("level_one.tscn")
+	if num_ent == null:
+		return 
+	
+	for i in range(0, num_ent):
+		entities_remaining[i].question_text = data[str(i)].get("question_text")
+		entities_remaining[i].answer_text = data[str(i)].get("answer_text")
+		entities_remaining[i].is_answer_correct = data[str(i)].get("is_answer_correct")
+		
+		entities_remaining[i].explanation_text = data[str(i)].get("explanation_text")
+		
+
 func  setup_entity(entity_data: EntityType) -> void:
 	# Display entity data
 	entity_sprite.sprite_frames = entity_data.get_child(0).sprite_frames
@@ -95,17 +127,24 @@ func _on_decline_button_pressed() -> void:
 	# TODO: Logic for pressing decline button
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
-	advance_level()
+	if not is_on_after_selection:
+		is_on_after_selection = true
+		advance_level()
+	else:
+		var is_choice_correct = false \
+		if entities_remaining[current_entity_id].is_answer_correct \
+		else true
+		setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
 	
 	
 func setup_boss_text(entity_data: EntityType,
 	is_choice_correct: bool) -> void:
 	boss_entity.answer_text = entity_data.explanation_text
-	# TODO: Make it so the question text depends on if the player choose the
-	# right option.
-	boss_entity.question_text = entity_data.correct_choice_text \
+	
+	# TODO: Maybe make it so the same flavor text can't appear twice in a row
+	boss_entity.question_text = correct_choice_flavor.pick_random() \
 		if is_choice_correct \
-		else entity_data.wrong_choice_text
+		else wrong_choice_flavor.pick_random()
 	setup_entity(boss_entity)
 	is_on_after_selection = false
 

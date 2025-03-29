@@ -361,9 +361,9 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mm4s5"]
 atlas = ExtResource("14_xrbqg")
-region = Rect2(0, 0, 192, 192)
+region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s6ikc"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1l25"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -371,7 +371,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 5.0
 }]
 
 [node name="GameWorld" type="Node2D"]
@@ -500,9 +500,6 @@ visible = false
 
 [node name="Entity1" parent="Entities" instance=ExtResource("5_r4wdr")]
 entity_name = "TestB0T"
-question_text = "Is it okay to eat 1 hotdog per week?"
-answer_text = "What do you mean, I eat 2..."
-explanation_text = "This is my explanation text!!"
 correct_choice_text = "Yayy you got it right"
 wrong_choice_text = "OHHH NOOOO"
 
@@ -511,9 +508,6 @@ sprite_frames = SubResource("SpriteFrames_o5wbv")
 
 [node name="Entity2" parent="Entities" instance=ExtResource("5_r4wdr")]
 entity_name = "A.I. 2.0"
-question_text = "Given a rock, a sheet of paper and some scissors, what game would you create?"
-answer_text = "Rock, paper,... scissors?"
-explanation_text = "Some boooooooring explanations"
 correct_choice_text = "WOOOOPIE"
 wrong_choice_text = "NOOOPE"
 
@@ -544,7 +538,7 @@ entity_name = "BOSS"
 [node name="AnimatedSprite2D" parent="BossEntity" index="0"]
 position = Vector2(248, 288)
 scale = Vector2(0.817708, 0.822917)
-sprite_frames = SubResource("SpriteFrames_s6ikc")
+sprite_frames = SubResource("SpriteFrames_y1l25")
 autoplay = "default"
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]

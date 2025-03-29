@@ -15,6 +15,10 @@ run/main_scene="uid://xyu1a31el25c"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
+[autoload]
+
+StaticData="*res://scripts/static_data.gd"
+
 [display]
 
 window/size/viewport_width=1080
@@ -26,6 +30,7 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://assets/": "orange",
+"res://resources/": "blue",
 "res://scenes/": "yellow",
 "res://scripts/": "green"
 }
