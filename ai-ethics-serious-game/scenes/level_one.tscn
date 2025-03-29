@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=72 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/sprites/backgrounds/game.png" id="1_cd1xg"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dv67oa1x7ubls" path="res://scenes/entity.tscn" id="5_r4wdr"]
 [ext_resource type="Texture2D" uid="uid://dd21mstu6o8wh" path="res://assets/sprites/decline_button/decline_button.tres" id="7_y8ti4"]
 [ext_resource type="Texture2D" uid="uid://cmvsrrwks5xlg" path="res://assets/sprites/decline_button/decline_btn.png" id="8_astit"]
+[ext_resource type="Texture2D" uid="uid://cfy3agnxwe5l7" path="res://assets/sprites/okboss_button/okboss_button.tres" id="9_4i3tx"]
+[ext_resource type="Texture2D" uid="uid://bejj2h5of3ogb" path="res://assets/sprites/okboss_button/okboss_btn.png" id="9_lgrt7"]
 [ext_resource type="Texture2D" uid="uid://cqte82qp8p7di" path="res://assets/sprites/robots/robot2/robot2.png" id="10_o5wbv"]
 [ext_resource type="Texture2D" uid="uid://bvwqidwahupa1" path="res://assets/sprites/robots/robot3/robot3.png" id="11_s6ikc"]
 [ext_resource type="Texture2D" uid="uid://bwctnn03pxawh" path="res://assets/sprites/robots/robot4/robot4.png" id="12_036lt"]
@@ -31,6 +33,14 @@ region = Rect2(204, 0, 102, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6ikc"]
 atlas = ExtResource("8_astit")
+region = Rect2(102, 0, 102, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1l25"]
+atlas = ExtResource("9_lgrt7")
+region = Rect2(204, 0, 102, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cok0"]
+atlas = ExtResource("9_lgrt7")
 region = Rect2(102, 0, 102, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_036lt"]
@@ -495,38 +505,44 @@ texture_normal = ExtResource("7_y8ti4")
 texture_pressed = SubResource("AtlasTexture_o5wbv")
 texture_hover = SubResource("AtlasTexture_s6ikc")
 
+[node name="OkBossButton" type="TextureButton" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 196.0
+offset_top = 455.0
+offset_right = 298.0
+offset_bottom = 499.0
+texture_normal = ExtResource("9_4i3tx")
+texture_pressed = SubResource("AtlasTexture_y1l25")
+texture_hover = SubResource("AtlasTexture_5cok0")
+
 [node name="Entities" type="Node2D" parent="."]
 visible = false
 
 [node name="Entity1" parent="Entities" instance=ExtResource("5_r4wdr")]
 entity_name = "TestB0T"
-correct_choice_text = "Yayy you got it right"
-wrong_choice_text = "OHHH NOOOO"
 
 [node name="AnimatedSprite2D" parent="Entities/Entity1" index="0"]
 sprite_frames = SubResource("SpriteFrames_o5wbv")
 
 [node name="Entity2" parent="Entities" instance=ExtResource("5_r4wdr")]
 entity_name = "A.I. 2.0"
-correct_choice_text = "WOOOOPIE"
-wrong_choice_text = "NOOOPE"
 
 [node name="AnimatedSprite2D" parent="Entities/Entity2" index="0"]
 sprite_frames = SubResource("SpriteFrames_3s2d1")
 
 [node name="Entity3" parent="Entities" instance=ExtResource("5_r4wdr")]
+entity_name = "NotGPT"
 question_text = "MUSSHIMAISI asdasd asd"
 answer_text = "asdad fdfsdg asd "
 is_answer_correct = true
 explanation_text = "asfgjtrsdh "
-correct_choice_text = "asfsdds"
-wrong_choice_text = "asda"
 
 [node name="AnimatedSprite2D" parent="Entities/Entity3" index="0"]
 sprite_frames = SubResource("SpriteFrames_4mjax")
 
 [node name="Entity4" parent="Entities" instance=ExtResource("5_r4wdr")]
-entity_name = "adad"
+entity_name = "R2D2"
 
 [node name="AnimatedSprite2D" parent="Entities/Entity4" index="0"]
 sprite_frames = SubResource("SpriteFrames_mm4s5")
@@ -543,6 +559,7 @@ autoplay = "default"
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/DeclineButton" to="." method="_on_decline_button_pressed"]
+[connection signal="pressed" from="UI/OkBossButton" to="." method="_on_accept_button_pressed"]
 
 [editable path="Entities/Entity1"]
 [editable path="Entities/Entity2"]

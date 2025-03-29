@@ -4,6 +4,12 @@ extends Node2D
 @onready var answer_label: Label = $UI/AnswerLabel
 @onready var question_label: Label = $UI/QuestionLabel
 
+# Background
+@onready var background_image: TextureRect = $UI/BackgroundImage
+@onready var two_btn_bg_image := preload("res://assets/sprites/backgrounds/game.png")
+@onready var one_btn_bg_image := preload("res://assets/sprites/backgrounds/game_one_btn.png")
+
+
 # Entity nodes
 @onready var entity_sprite: AnimatedSprite2D = $UI/EntitySprite
 @onready var title_entity_label: Label = $UI/TitleEntityLabel
@@ -21,6 +27,7 @@ extends Node2D
 # Buttons
 @onready var accept_button: TextureButton = $UI/AcceptButton
 @onready var decline_button: TextureButton = $UI/DeclineButton
+@onready var ok_boss_button: TextureButton = $UI/OkBossButton
 
 # Entities
 var current_entity_id := -1
@@ -112,13 +119,12 @@ func _on_accept_button_pressed() -> void:
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
 	if not is_on_after_selection:
-		is_on_after_selection = true
 		advance_level()
 	else:
 		var is_choice_correct = true \
 		if entities_remaining[current_entity_id].is_answer_correct \
 		else false
-		setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
+		advance_to_boss_screen(is_choice_correct)
 	
 	
 func _on_decline_button_pressed() -> void:
@@ -128,15 +134,21 @@ func _on_decline_button_pressed() -> void:
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
 	if not is_on_after_selection:
-		is_on_after_selection = true
 		advance_level()
 	else:
 		var is_choice_correct = false \
 		if entities_remaining[current_entity_id].is_answer_correct \
 		else true
-		setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
+		advance_to_boss_screen(is_choice_correct)
 	
-	
+func advance_to_boss_screen(is_choice_correct: bool) -> void:
+	#background_image.texture.reset_state()
+	background_image.texture = one_btn_bg_image
+	accept_button.hide()
+	decline_button.hide()
+	ok_boss_button.show()
+	setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
+
 func setup_boss_text(entity_data: EntityType,
 	is_choice_correct: bool) -> void:
 	boss_entity.answer_text = entity_data.explanation_text
@@ -149,6 +161,12 @@ func setup_boss_text(entity_data: EntityType,
 	is_on_after_selection = false
 
 func advance_level() -> void:
+	is_on_after_selection = true
+	ok_boss_button.hide()
+	accept_button.show()
+	decline_button.show()
+	background_image.texture = two_btn_bg_image
+	
 	current_entity_id += 1
 	progress_label.text = "Progress: " + str(current_entity_id) + "/" + \
 						str(entities_count)

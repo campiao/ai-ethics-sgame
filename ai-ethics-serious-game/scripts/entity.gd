@@ -10,5 +10,3 @@ class_name EntityType
 
 @export_group("Post-Question properties")
 @export_multiline var explanation_text : String = ""
-@export_multiline var correct_choice_text : String = ""
-@export_multiline var wrong_choice_text : String = ""
