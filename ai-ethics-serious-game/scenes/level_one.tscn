@@ -552,7 +552,7 @@ sprite_frames = SubResource("SpriteFrames_mm4s5")
 [node name="BossEntity" parent="." instance=ExtResource("5_r4wdr")]
 visible = false
 entity_name = "BOSS"
-question_text = "Hey, pay atention, new hire! You are here to recruit AI's based on their answers to an ethical question! It is up to your judgement to accept or decline theirs answers as valid to the question given.
+question_text = "Hey, pay atention, new hire! You are here to recruit AI's based on their answers to an ethical question! It is up to your judgement to accept or decline the answers as valid to the question given.
 Good luck!"
 answer_text = "Below will appear a question which you have to read carefully! Here the answer given by the AI is shown. After each decision, I'll give you a brief explanation regarding the answer given. When you're ready, press the 'Ok Boss' button."
 

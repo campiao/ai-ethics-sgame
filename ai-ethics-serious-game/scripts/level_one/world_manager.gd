@@ -155,7 +155,6 @@ func check_is_answer_correct(button_truth : bool) -> bool:
 	
 	if is_choice_correct:
 		num_correct_guesses += 1
-		print("Adding correct guess")
 	return is_choice_correct
 
 func advance_to_boss_screen() -> void:

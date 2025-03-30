@@ -16,7 +16,7 @@ script = ExtResource("1_73m3e")
 good_ending_text = "Congratulations, you had a good error rate!
 You get to keep your job one more day, while making sure AI's we hire meet our ethical and moral values! :)"
 bad_ending_text = "Oh no, you seem to have performed really badly!
-For this reason, we are choosing to terminate your contract and replace you with an AI!
+For this reason, we are choosing to terminate your contract and replacing you with an AI!
 (Most AI's hired are unethical, what could go wrong...) :("
 
 [node name="TextureRect" type="TextureRect" parent="."]
