@@ -33,7 +33,4 @@ void fragment() {
 
     COLOR.rgb = color;
     COLOR.a = 1.0;
-	if (uv.x == 0.0){
-		COLOR.a = 0.0;
-	}
 }
