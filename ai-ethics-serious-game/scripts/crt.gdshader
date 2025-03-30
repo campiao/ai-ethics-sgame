@@ -18,7 +18,7 @@ void fragment() {
     uv += delta * warp_factor;
     
     float scanline = sin(uv.y * resolution.y * PI) * 0.5 + 0.5;
-    scanline = mix(1.0, scanline, scan_line_amount * 0.5); // Réduit l'impact
+    scanline = mix(1.0, scanline, scan_line_amount * 0.5);
     
     float grille = mod(uv.x * resolution.x, 3.0) < 1.5 ? 0.95 : 1.05;
     grille = mix(1.0, grille, grille_amount * 0.5);

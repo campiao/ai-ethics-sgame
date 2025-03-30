@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://blev1wfj3lj3b"]
+
+[ext_resource type="Script" uid="uid://r4oe3r7nuk6y" path="res://scripts/post_level/post_level_screen.gd" id="1_73m3e"]
+[ext_resource type="Texture2D" uid="uid://b3et846ghv02e" path="res://assets/sprites/backgrounds/statistics_panel.png" id="1_d32cl"]
+[ext_resource type="FontFile" uid="uid://c06okaskmctv1" path="res://assets/fonts/Pixel Square Bold10.ttf" id="2_vb2ui"]
+[ext_resource type="FontFile" uid="uid://c0rkxsutw6wpa" path="res://assets/fonts/Pixel Square 10.ttf" id="3_3bdg5"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_73m3e")
+good_ending_text = "Congratulations, you had a good error rate!
+You get to keep your job one more day, while making sure AI's we hire meet our ethical and moral values! :)"
+bad_ending_text = "Oh no, you seem to have performed really badly!
+For this reason, we are choosing to terminate your contract and replace you with an AI!
+(Most AI's hired are unethical, what could go wrong...) :("
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_d32cl")
+
+[node name="TextToRender" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="TextToRender"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 211.0
+offset_right = 475.0
+offset_bottom = 234.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vb2ui")
+theme_override_font_sizes/font_size = 20
+text = "END OF DAY "
+
+[node name="PRLabel" type="Label" parent="TextToRender"]
+layout_mode = 1
+offset_left = 415.0
+offset_top = 254.0
+offset_right = 683.0
+offset_bottom = 277.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vb2ui")
+theme_override_font_sizes/font_size = 20
+text = "PERFORMANCE REVIEW"
+horizontal_alignment = 1
+
+[node name="NumCorrectGuesses" type="Label" parent="TextToRender"]
+offset_left = 305.0
+offset_top = 291.0
+offset_right = 563.0
+offset_bottom = 314.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3bdg5")
+theme_override_font_sizes/font_size = 20
+text = "Correct guesses: 0/5"
+
+[node name="ErrorPercentage" type="Label" parent="TextToRender"]
+offset_left = 305.0
+offset_top = 326.0
+offset_right = 565.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3bdg5")
+theme_override_font_sizes/font_size = 20
+text = "Error percentage: 10%"
+
+[node name="EndLevelText" type="Label" parent="TextToRender"]
+offset_left = 305.0
+offset_top = 375.0
+offset_right = 796.0
+offset_bottom = 507.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3bdg5")
+theme_override_font_sizes/font_size = 20
+text = "Congratullations, you had a below average error rate!
+You get to keep your job one more day, while making sure AI's we hire meet our ethical and moral values! :)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

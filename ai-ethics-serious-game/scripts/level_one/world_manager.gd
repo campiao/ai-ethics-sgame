@@ -28,6 +28,9 @@ extends Node2D
 @onready var decline_button: TextureButton = $UI/DeclineButton
 @onready var ok_boss_button: TextureButton = $UI/OkBossButton
 
+# End-game/level screen
+@onready var post_level_screen: Control = $PostLevelScreen
+
 # Entities
 var current_entity_id := -1
 var entities_count := -1
@@ -36,6 +39,7 @@ var entities_count := -1
 var is_entity_visible := false
 var is_tutorial_done := false
 var is_on_after_selection := true
+var is_level_over := false
 
 # Text animation speed
 var text_update_speed := 2.0
@@ -52,9 +56,13 @@ var wrong_choice_flavor := [
 	"Incorrect option! Let me tell you why...",
 ]
 
+# Correct guesses
+var num_correct_guesses := -1
+
 func _ready() -> void:
 	current_entity_id = 0
 	entities_count = len(entities_remaining)
+	num_correct_guesses = 0
 	
 	progress_label.text = "Progress: " + str(current_entity_id) + "/" + \
 						str(entities_count)
@@ -65,6 +73,8 @@ func _ready() -> void:
 	show_tutorial()
 	
 func _process(_delta: float) -> void:
+	if is_level_over:
+		return
 	if not is_entity_visible:
 		setup_entity(entities_remaining[current_entity_id])
 	else:
@@ -102,47 +112,51 @@ func  setup_entity(entity_data: EntityType) -> void:
 	is_entity_visible = true
 
 func _on_accept_button_pressed() -> void:
+	base_button_logic()
+	
+	var is_choice_correct = check_is_answer_correct(true)
+	advance_to_boss_screen()
+	setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
+	
+	
+func _on_decline_button_pressed() -> void:
+	base_button_logic()
+	
+	var is_choice_correct = check_is_answer_correct(false)
+	advance_to_boss_screen()
+	setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
+	
+func _on_ok_boss_button_pressed() -> void:
+	base_button_logic()
+	
+	if not is_tutorial_done:
+		current_entity_id -= 1
+		is_tutorial_done = true
+	advance_level()
+
+func base_button_logic() -> void:
 	if current_entity_id > entities_count-1:
 		return
 	
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
+
+func check_is_answer_correct(button_truth : bool) -> bool:
+	var is_choice_correct := false
 	
-	if not is_on_after_selection:
-		advance_level()
-	else:
-		var is_choice_correct = true \
+	if button_truth:
+		is_choice_correct = true \
 		if entities_remaining[current_entity_id].is_answer_correct \
 		else false
-		advance_to_boss_screen()
-		setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
-	
-	
-func _on_decline_button_pressed() -> void:
-	if current_entity_id > entities_count - 1:
-		return
-	
-	answer_label.visible_ratio = 0.0
-	question_label.visible_ratio = 0.0
-	if not is_on_after_selection:
-		advance_level()
 	else:
-		var is_choice_correct = false \
+		is_choice_correct = false \
 		if entities_remaining[current_entity_id].is_answer_correct \
 		else true
-		advance_to_boss_screen()
-		setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
 	
-func _on_ok_boss_button_pressed() -> void:
-	if current_entity_id > entities_count - 1:
-		# TODO: Show end game screen
-		return
-	answer_label.visible_ratio = 0.0
-	question_label.visible_ratio = 0.0
-	if not is_tutorial_done:
-		current_entity_id -= 1
-		is_tutorial_done = true
-	advance_level()
+	if is_choice_correct:
+		num_correct_guesses += 1
+		print("Adding correct guess")
+	return is_choice_correct
 
 func advance_to_boss_screen() -> void:
 	#background_image.texture.reset_state()
@@ -176,11 +190,13 @@ func advance_level() -> void:
 	current_entity_id += 1
 	progress_label.text = "Progress: " + str(current_entity_id) + "/" + \
 						str(entities_count)
-	# TODO: End-game/level screen, triggered here
+	
+	# NOTE: End level sequence here
 	if current_entity_id > entities_count-1:
-		print("Level has ended, swap to main menu...")
-		await get_tree().create_timer(1.0).timeout
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		post_level_screen.set_stats_results(num_correct_guesses,
+											entities_count)
+		post_level_screen.show()
+		is_level_over = true
 		return
 	
 	is_entity_visible = false

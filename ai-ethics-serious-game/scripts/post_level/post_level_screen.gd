@@ -1,0 +1,66 @@
+extends Control
+
+@onready var text_to_render: Control = $TextToRender
+@onready var text_components := text_to_render.get_children()
+
+@onready var text_correct_guesses: Label = $TextToRender/NumCorrectGuesses
+@onready var text_error_percentage: Label = $TextToRender/ErrorPercentage
+@onready var text_end_level: Label = $TextToRender/EndLevelText
+
+@export_multiline var good_ending_text := ""
+@export_multiline var bad_ending_text := ""
+
+var current_id := -1
+var num_text_remaining := -1
+
+var correct_guesses := -1
+var error_percentage := -1.0
+var entities_count := -1
+
+var text_update_speed := 3.0
+
+func _ready() -> void:
+	num_text_remaining = len(text_components)
+	current_id = 0
+	
+	for elem: Label in text_components:
+		elem.visible_ratio = 0.0
+	
+
+func _process(delta: float) -> void:
+	if current_id > num_text_remaining -1:
+		return
+	if visible:
+		var has_finished_drawing := draw_text_component(current_id)
+		if has_finished_drawing:
+			current_id += 1
+		
+func draw_text_component(id: int) -> bool:
+	if text_components[id].visible_ratio >= 1.0:
+		return true
+	else:
+		text_components[id].visible_ratio += \
+		1.0/text_components[id].text.length()/text_update_speed
+	return false
+	
+func set_stats_results(num_correct_guesses, num_entities : int) -> void:
+	correct_guesses = num_correct_guesses
+	entities_count = num_entities
+	error_percentage = float(num_entities - num_correct_guesses)/num_entities
+	set_text_to_display()
+	
+func set_text_to_display() -> void:
+	text_correct_guesses.text = "Correct guesses: "+str(correct_guesses) + \
+								"/"+str(entities_count)
+	text_error_percentage.text = "Error percentage: "+ \
+								str(error_percentage*100) + "%"
+	if error_percentage > 0.51:
+		text_end_level.text = bad_ending_text
+	else:
+		text_end_level.text = good_ending_text
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event.is_action("left_mouse_btn_clicked") and \
+		current_id == num_text_remaining:
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

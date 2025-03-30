@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=74 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/sprites/backgrounds/game.png" id="1_cd1xg"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dlqctt8jucxih" path="res://assets/sprites/robots/robot1/robot.png" id="13_nlxio"]
 [ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="14_xrbqg"]
 [ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="17_4i3tx"]
+[ext_resource type="PackedScene" uid="uid://blev1wfj3lj3b" path="res://scenes/post_level_screen.tscn" id="18_w4tp6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8ti4"]
 atlas = ExtResource("4_bhu28")
@@ -413,7 +414,7 @@ theme_override_fonts/font = ExtResource("2_t18mc")
 theme_override_font_sizes/font_size = 20
 text = "This is an example text! It can have multiple lines too.
 Here we will show the answer to the question below, for the player to choose if it is acceptable or not :)"
-autowrap_mode = 2
+autowrap_mode = 3
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -429,7 +430,7 @@ theme_override_font_sizes/font_size = 20
 text = "This is an example text! It can have multiple lines too.
 Here we will show an ethical question, woooo
 "
-autowrap_mode = 2
+autowrap_mode = 3
 text_overrun_behavior = 1
 visible_characters = 0
 visible_ratio = 0.0
@@ -551,8 +552,9 @@ sprite_frames = SubResource("SpriteFrames_mm4s5")
 [node name="BossEntity" parent="." instance=ExtResource("5_r4wdr")]
 visible = false
 entity_name = "BOSS"
-question_text = "Hello! This is the tutorial text! Here we will explain the game to the player"
-answer_text = "Here we show thatbthis is the answer field, and the player should pay attention to it"
+question_text = "Hey, pay atention, new hire! You are here to recruit AI's based on their answers to an ethical question! It is up to your judgement to accept or decline theirs answers as valid to the question given.
+Good luck!"
+answer_text = "Below will appear a question which you have to read carefully! Here the answer given by the AI is shown. After each decision, I'll give you a brief explanation regarding the answer given. When you're ready, press the 'Ok Boss' button."
 
 [node name="AnimatedSprite2D" parent="BossEntity" index="0"]
 position = Vector2(248, 288)
@@ -561,6 +563,9 @@ sprite_frames = SubResource("SpriteFrames_y1l25")
 autoplay = "default"
 
 [node name="CanvasLayer" parent="." instance=ExtResource("17_4i3tx")]
+
+[node name="PostLevelScreen" parent="." instance=ExtResource("18_w4tp6")]
+visible = false
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/DeclineButton" to="." method="_on_decline_button_pressed"]
