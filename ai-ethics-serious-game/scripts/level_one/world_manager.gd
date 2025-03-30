@@ -134,6 +134,9 @@ func _on_decline_button_pressed() -> void:
 		setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
 	
 func _on_ok_boss_button_pressed() -> void:
+	if current_entity_id > entities_count - 1:
+		# TODO: Show end game screen
+		return
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
 	if not is_tutorial_done:

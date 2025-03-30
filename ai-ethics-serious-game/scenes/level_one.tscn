@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=73 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/sprites/backgrounds/game.png" id="1_cd1xg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bwctnn03pxawh" path="res://assets/sprites/robots/robot4/robot4.png" id="12_036lt"]
 [ext_resource type="Texture2D" uid="uid://dlqctt8jucxih" path="res://assets/sprites/robots/robot1/robot.png" id="13_nlxio"]
 [ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="14_xrbqg"]
+[ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="17_4i3tx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8ti4"]
 atlas = ExtResource("4_bhu28")
@@ -558,6 +559,8 @@ position = Vector2(248, 288)
 scale = Vector2(0.817708, 0.822917)
 sprite_frames = SubResource("SpriteFrames_y1l25")
 autoplay = "default"
+
+[node name="CanvasLayer" parent="." instance=ExtResource("17_4i3tx")]
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/DeclineButton" to="." method="_on_decline_button_pressed"]
