@@ -550,6 +550,8 @@ sprite_frames = SubResource("SpriteFrames_mm4s5")
 [node name="BossEntity" parent="." instance=ExtResource("5_r4wdr")]
 visible = false
 entity_name = "BOSS"
+question_text = "Hello! This is the tutorial text! Here we will explain the game to the player"
+answer_text = "Here we show thatbthis is the answer field, and the player should pay attention to it"
 
 [node name="AnimatedSprite2D" parent="BossEntity" index="0"]
 position = Vector2(248, 288)
@@ -559,7 +561,7 @@ autoplay = "default"
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/DeclineButton" to="." method="_on_decline_button_pressed"]
-[connection signal="pressed" from="UI/OkBossButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="UI/OkBossButton" to="." method="_on_ok_boss_button_pressed"]
 
 [editable path="Entities/Entity1"]
 [editable path="Entities/Entity2"]

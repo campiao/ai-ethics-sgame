@@ -9,7 +9,6 @@ extends Node2D
 @onready var two_btn_bg_image := preload("res://assets/sprites/backgrounds/game.png")
 @onready var one_btn_bg_image := preload("res://assets/sprites/backgrounds/game_one_btn.png")
 
-
 # Entity nodes
 @onready var entity_sprite: AnimatedSprite2D = $UI/EntitySprite
 @onready var title_entity_label: Label = $UI/TitleEntityLabel
@@ -54,8 +53,6 @@ var wrong_choice_flavor := [
 ]
 
 func _ready() -> void:
-	#var first_entity := entities_remaining[0]
-	#setup_entity(first_entity)
 	current_entity_id = 0
 	entities_count = len(entities_remaining)
 	
@@ -65,14 +62,11 @@ func _ready() -> void:
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
 	set_entities_data()
+	show_tutorial()
 	
 func _process(_delta: float) -> void:
 	if not is_entity_visible:
-		if is_tutorial_done:
-			setup_entity(entities_remaining[current_entity_id])
-		#setup_entity(boss_entity)
-		# TODO: Add screen with boss button
-		is_tutorial_done = true
+		setup_entity(entities_remaining[current_entity_id])
 	else:
 		if question_label.visible_ratio < 1.0:
 			question_label.visible_ratio += \
@@ -85,11 +79,9 @@ func set_entities_data() -> void:
 	var data = StaticData.entities_dict
 	var num_ent = len(data.keys())
 	
-	# ALERT: Something is causing the editor to lag can consume memory on
+	# ALERT: Something is causing the editor to lag and consume memory on
 	# "run current scene", not sure if it is this function
 	# Only happens on this scene ("level_one.tscn")
-	if num_ent == null:
-		return 
 	
 	for i in range(0, num_ent):
 		entities_remaining[i].question_text = data[str(i)].get("question_text")
@@ -98,7 +90,6 @@ func set_entities_data() -> void:
 		
 		entities_remaining[i].explanation_text = data[str(i)].get("explanation_text")
 		
-
 func  setup_entity(entity_data: EntityType) -> void:
 	# Display entity data
 	entity_sprite.sprite_frames = entity_data.get_child(0).sprite_frames
@@ -113,24 +104,24 @@ func  setup_entity(entity_data: EntityType) -> void:
 func _on_accept_button_pressed() -> void:
 	if current_entity_id > entities_count-1:
 		return
-	# TODO: Logic for pressing accept button
-	# TODO: Fix after selection boss interaction
-	# It kinda works but is currently using the accept button
+	
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
+	
 	if not is_on_after_selection:
 		advance_level()
 	else:
 		var is_choice_correct = true \
 		if entities_remaining[current_entity_id].is_answer_correct \
 		else false
-		advance_to_boss_screen(is_choice_correct)
+		advance_to_boss_screen()
+		setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
 	
 	
 func _on_decline_button_pressed() -> void:
 	if current_entity_id > entities_count - 1:
 		return
-	# TODO: Logic for pressing decline button
+	
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
 	if not is_on_after_selection:
@@ -139,15 +130,30 @@ func _on_decline_button_pressed() -> void:
 		var is_choice_correct = false \
 		if entities_remaining[current_entity_id].is_answer_correct \
 		else true
-		advance_to_boss_screen(is_choice_correct)
+		advance_to_boss_screen()
+		setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
 	
-func advance_to_boss_screen(is_choice_correct: bool) -> void:
+func _on_ok_boss_button_pressed() -> void:
+	answer_label.visible_ratio = 0.0
+	question_label.visible_ratio = 0.0
+	if not is_tutorial_done:
+		current_entity_id -= 1
+		is_tutorial_done = true
+	advance_level()
+
+func advance_to_boss_screen() -> void:
 	#background_image.texture.reset_state()
 	background_image.texture = one_btn_bg_image
 	accept_button.hide()
 	decline_button.hide()
 	ok_boss_button.show()
-	setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
+	
+
+func advance_to_normal_screen() -> void:
+	ok_boss_button.hide()
+	accept_button.show()
+	decline_button.show()
+	background_image.texture = two_btn_bg_image
 
 func setup_boss_text(entity_data: EntityType,
 	is_choice_correct: bool) -> void:
@@ -162,14 +168,12 @@ func setup_boss_text(entity_data: EntityType,
 
 func advance_level() -> void:
 	is_on_after_selection = true
-	ok_boss_button.hide()
-	accept_button.show()
-	decline_button.show()
-	background_image.texture = two_btn_bg_image
+	advance_to_normal_screen()
 	
 	current_entity_id += 1
 	progress_label.text = "Progress: " + str(current_entity_id) + "/" + \
 						str(entities_count)
+	# TODO: End-game/level screen, triggered here
 	if current_entity_id > entities_count-1:
 		print("Level has ended, swap to main menu...")
 		await get_tree().create_timer(1.0).timeout
@@ -177,3 +181,7 @@ func advance_level() -> void:
 		return
 	
 	is_entity_visible = false
+
+func show_tutorial() -> void:
+	advance_to_boss_screen()
+	setup_entity(boss_entity)
