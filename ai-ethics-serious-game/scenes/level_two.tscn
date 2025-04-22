@@ -1,0 +1,172 @@
+[gd_scene load_steps=17 format=3 uid="uid://tq7nj7tl5xim"]
+
+[ext_resource type="Texture2D" uid="uid://5lgjo5ycxxlw" path="res://assets/sprites/backgrounds/background_level2_dialog.png" id="1_1e7uk"]
+[ext_resource type="Script" uid="uid://p2aeq7anuu3p" path="res://level_2_manager.gd" id="1_4br1q"]
+[ext_resource type="FontFile" uid="uid://c0rkxsutw6wpa" path="res://assets/fonts/Pixel Square 10.ttf" id="2_ubnpl"]
+[ext_resource type="FontFile" uid="uid://c06okaskmctv1" path="res://assets/fonts/Pixel Square Bold10.ttf" id="3_4br1q"]
+[ext_resource type="Texture2D" uid="uid://cfy3agnxwe5l7" path="res://assets/sprites/okboss_button/okboss_button.tres" id="4_sw5gm"]
+[ext_resource type="Texture2D" uid="uid://bejj2h5of3ogb" path="res://assets/sprites/okboss_button/okboss_btn.png" id="5_05hhi"]
+[ext_resource type="PackedScene" uid="uid://dv67oa1x7ubls" path="res://scenes/entity.tscn" id="6_brhlk"]
+[ext_resource type="Script" uid="uid://bgbamvahpjodu" path="res://scripts/initial_boss.gd" id="7_c43tx"]
+[ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="8_ibewu"]
+[ext_resource type="Texture2D" uid="uid://cjkukhtjhw33v" path="res://assets/sprites/backgrounds/background.png" id="9_8imr8"]
+[ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="10_ubnpl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3d04n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hijyc"]
+atlas = ExtResource("5_05hhi")
+region = Rect2(204, 0, 102, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbtcm"]
+atlas = ExtResource("5_05hhi")
+region = Rect2(102, 0, 102, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm4s5"]
+atlas = ExtResource("8_ibewu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgrtt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm4s5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LevelTwo" type="Node2D"]
+script = ExtResource("1_4br1q")
+
+[node name="UI_Dialog" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="UI_Dialog"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1e7uk")
+
+[node name="AnswerLabel" type="Label" parent="UI_Dialog"]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 212.0
+offset_right = 889.0
+offset_bottom = 343.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ubnpl")
+theme_override_font_sizes/font_size = 20
+text = "This is an example text! It can have multiple lines too.
+Here we will show the answer to the question below, for the player to choose if it is acceptable or not :)"
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="QuestionLabel" type="Label" parent="UI_Dialog"]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 410.0
+offset_right = 887.0
+offset_bottom = 560.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ubnpl")
+theme_override_font_sizes/font_size = 20
+text = "This is an example text! It can have multiple lines too.
+Here we will show an ethical question, woooo
+"
+autowrap_mode = 3
+text_overrun_behavior = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TitleAnswerLabel" type="Label" parent="UI_Dialog"]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 189.0
+offset_right = 537.0
+offset_bottom = 212.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "ANSWER"
+
+[node name="TitleQuestionLabel" type="Label" parent="UI_Dialog"]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 387.0
+offset_right = 537.0
+offset_bottom = 410.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "QUESTION"
+
+[node name="EntitySprite" type="AnimatedSprite2D" parent="UI_Dialog"]
+position = Vector2(247.5, 288.25)
+scale = Vector2(1.22656, 1.23047)
+sprite_frames = SubResource("SpriteFrames_3d04n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI_Dialog/EntitySprite"]
+
+[node name="TitleEntityLabel" type="Label" parent="UI_Dialog"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 189.0
+offset_right = 321.0
+offset_bottom = 212.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "ENTITY"
+
+[node name="OkBossButton" type="TextureButton" parent="UI_Dialog"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 455.0
+offset_right = 298.0
+offset_bottom = 499.0
+texture_normal = ExtResource("4_sw5gm")
+texture_pressed = SubResource("AtlasTexture_hijyc")
+texture_hover = SubResource("AtlasTexture_dbtcm")
+
+[node name="BossEntity" parent="." instance=ExtResource("6_brhlk")]
+visible = false
+script = ExtResource("7_c43tx")
+over = false
+entity_name = "BOSS"
+answer_text = "Analyst, you've done your part so far, but the real task begins now."
+
+[node name="AnimatedSprite2D" parent="BossEntity" index="0"]
+position = Vector2(248, 288)
+scale = Vector2(0.817708, 0.822917)
+sprite_frames = SubResource("SpriteFrames_qgrtt")
+autoplay = "default"
+
+[node name="UI_Images" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="UI_Images"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_8imr8")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("10_ubnpl")]
+visible = false
+
+[connection signal="pressed" from="UI_Dialog/OkBossButton" to="." method="_on_ok_boss_button_pressed"]
+
+[editable path="BossEntity"]
