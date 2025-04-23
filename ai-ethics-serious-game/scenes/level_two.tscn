@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://tq7nj7tl5xim"]
+[gd_scene load_steps=18 format=3 uid="uid://tq7nj7tl5xim"]
 
 [ext_resource type="Texture2D" uid="uid://5lgjo5ycxxlw" path="res://assets/sprites/backgrounds/background_level2_dialog.png" id="1_1e7uk"]
-[ext_resource type="Script" uid="uid://p2aeq7anuu3p" path="res://level_2_manager.gd" id="1_4br1q"]
+[ext_resource type="Script" uid="uid://p2aeq7anuu3p" path="res://scripts/level_one/level_two/level_2_manager.gd" id="1_4br1q"]
 [ext_resource type="FontFile" uid="uid://c0rkxsutw6wpa" path="res://assets/fonts/Pixel Square 10.ttf" id="2_ubnpl"]
 [ext_resource type="FontFile" uid="uid://c06okaskmctv1" path="res://assets/fonts/Pixel Square Bold10.ttf" id="3_4br1q"]
 [ext_resource type="Texture2D" uid="uid://cfy3agnxwe5l7" path="res://assets/sprites/okboss_button/okboss_button.tres" id="4_sw5gm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="8_ibewu"]
 [ext_resource type="Texture2D" uid="uid://cjkukhtjhw33v" path="res://assets/sprites/backgrounds/background.png" id="9_8imr8"]
 [ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="10_ubnpl"]
+[ext_resource type="Texture2D" uid="uid://c6fai7ks30kvn" path="res://assets/sprites/icon.svg" id="11_sw5gm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3d04n"]
 
@@ -86,7 +87,7 @@ text_overrun_behavior = 1
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="TitleAnswerLabel" type="Label" parent="UI_Dialog"]
+[node name="TitleMessageLabel" type="Label" parent="UI_Dialog"]
 layout_mode = 0
 offset_left = 388.0
 offset_top = 189.0
@@ -95,7 +96,7 @@ offset_bottom = 212.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_4br1q")
 theme_override_font_sizes/font_size = 20
-text = "ANSWER"
+text = "MESSAGE"
 
 [node name="TitleQuestionLabel" type="Label" parent="UI_Dialog"]
 layout_mode = 0
@@ -163,6 +164,16 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("9_8imr8")
+
+[node name="ImageLeft" type="Sprite2D" parent="UI_Images"]
+position = Vector2(339, 357.5)
+scale = Vector2(2.29688, 2.30469)
+texture = ExtResource("11_sw5gm")
+
+[node name="ImageRight" type="Sprite2D" parent="UI_Images"]
+position = Vector2(741, 355.5)
+scale = Vector2(2.29688, 2.30469)
+texture = ExtResource("11_sw5gm")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("10_ubnpl")]
 visible = false

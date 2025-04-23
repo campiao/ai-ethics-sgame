@@ -54,6 +54,7 @@ text = "PERFORMANCE REVIEW"
 horizontal_alignment = 1
 
 [node name="NumCorrectGuesses" type="Label" parent="TextToRender"]
+layout_mode = 0
 offset_left = 305.0
 offset_top = 291.0
 offset_right = 563.0
@@ -64,6 +65,7 @@ theme_override_font_sizes/font_size = 20
 text = "Correct guesses: 0/5"
 
 [node name="ErrorPercentage" type="Label" parent="TextToRender"]
+layout_mode = 0
 offset_left = 305.0
 offset_top = 326.0
 offset_right = 565.0
@@ -74,6 +76,7 @@ theme_override_font_sizes/font_size = 20
 text = "Error percentage: 10%"
 
 [node name="EndLevelText" type="Label" parent="TextToRender"]
+layout_mode = 0
 offset_left = 305.0
 offset_top = 375.0
 offset_right = 796.0
@@ -81,8 +84,7 @@ offset_bottom = 507.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_3bdg5")
 theme_override_font_sizes/font_size = 20
-text = "Congratullations, you had a below average error rate!
-You get to keep your job one more day, while making sure AI's we hire meet our ethical and moral values! :)"
+text = "Endgame message, good or bad ending"
 horizontal_alignment = 1
 autowrap_mode = 3
 

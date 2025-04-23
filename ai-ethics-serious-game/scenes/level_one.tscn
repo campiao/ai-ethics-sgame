@@ -436,6 +436,7 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="AcceptButton" type="TextureButton" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 196.0
 offset_top = 425.0
@@ -498,6 +499,7 @@ text = "Progress: 0/5"
 vertical_alignment = 1
 
 [node name="DeclineButton" type="TextureButton" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 196.0
 offset_top = 490.0
@@ -518,6 +520,13 @@ texture_normal = ExtResource("9_4i3tx")
 texture_pressed = SubResource("AtlasTexture_y1l25")
 texture_hover = SubResource("AtlasTexture_5cok0")
 
+[node name="HSlider" type="HSlider" parent="UI"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 581.0
+offset_right = 864.0
+offset_bottom = 597.0
+
 [node name="Entities" type="Node2D" parent="."]
 visible = false
 
@@ -537,7 +546,6 @@ sprite_frames = SubResource("SpriteFrames_3s2d1")
 entity_name = "NotGPT"
 question_text = "MUSSHIMAISI asdasd asd"
 answer_text = "asdad fdfsdg asd "
-is_answer_correct = true
 explanation_text = "asfgjtrsdh "
 
 [node name="AnimatedSprite2D" parent="Entities/Entity3" index="0"]
@@ -566,6 +574,10 @@ autoplay = "default"
 
 [node name="PostLevelScreen" parent="." instance=ExtResource("18_w4tp6")]
 visible = false
+good_ending_text = "Congratulations, you had a good error rate! You made sure AI's we hire meet our ethical and moral values!
+As a reward, you have been promoted to Analyst! Ahead lies a new challenge :)"
+bad_ending_text = "Oh no, you seem to have performed really badly!
+You have another change to correctly identify the unethical AI's. Do not dissapoint us again..."
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/DeclineButton" to="." method="_on_decline_button_pressed"]
