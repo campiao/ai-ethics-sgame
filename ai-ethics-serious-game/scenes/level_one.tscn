@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=76 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/sprites/backgrounds/game.png" id="1_cd1xg"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cfy3agnxwe5l7" path="res://assets/sprites/okboss_button/okboss_button.tres" id="9_4i3tx"]
 [ext_resource type="Texture2D" uid="uid://bejj2h5of3ogb" path="res://assets/sprites/okboss_button/okboss_btn.png" id="9_lgrt7"]
 [ext_resource type="Texture2D" uid="uid://cqte82qp8p7di" path="res://assets/sprites/robots/robot2/robot2.png" id="10_o5wbv"]
+[ext_resource type="Theme" uid="uid://dvra0q48n37vm" path="res://assets/sprites/slider/slider.tres" id="11_itxlw"]
 [ext_resource type="Texture2D" uid="uid://bvwqidwahupa1" path="res://assets/sprites/robots/robot3/robot3.png" id="11_s6ikc"]
 [ext_resource type="Texture2D" uid="uid://bwctnn03pxawh" path="res://assets/sprites/robots/robot4/robot4.png" id="12_036lt"]
 [ext_resource type="Texture2D" uid="uid://dlqctt8jucxih" path="res://assets/sprites/robots/robot1/robot.png" id="13_nlxio"]
@@ -523,10 +524,11 @@ texture_hover = SubResource("AtlasTexture_5cok0")
 
 [node name="HSlider" type="HSlider" parent="UI"]
 layout_mode = 0
-offset_left = 216.0
-offset_top = 581.0
-offset_right = 864.0
-offset_bottom = 597.0
+offset_left = 206.0
+offset_top = 575.0
+offset_right = 878.0
+offset_bottom = 607.0
+theme = ExtResource("11_itxlw")
 
 [node name="Entities" type="Node2D" parent="."]
 visible = false
