@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=75 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/sprites/backgrounds/game.png" id="1_cd1xg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bwctnn03pxawh" path="res://assets/sprites/robots/robot4/robot4.png" id="12_036lt"]
 [ext_resource type="Texture2D" uid="uid://dlqctt8jucxih" path="res://assets/sprites/robots/robot1/robot.png" id="13_nlxio"]
 [ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="14_xrbqg"]
+[ext_resource type="Script" uid="uid://bgbamvahpjodu" path="res://scripts/initial_boss.gd" id="16_unjau"]
 [ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="17_4i3tx"]
 [ext_resource type="PackedScene" uid="uid://blev1wfj3lj3b" path="res://scenes/post_level_screen.tscn" id="18_w4tp6"]
 
@@ -551,10 +552,10 @@ sprite_frames = SubResource("SpriteFrames_mm4s5")
 
 [node name="BossEntity" parent="." instance=ExtResource("5_r4wdr")]
 visible = false
+script = ExtResource("16_unjau")
+over = false
 entity_name = "BOSS"
-question_text = "Hey, pay atention, new hire! You are here to recruit AI's based on their answers to an ethical question! It is up to your judgement to accept or decline the answers as valid to the question given.
-Good luck!"
-answer_text = "Below will appear a question which you have to read carefully! Here the answer given by the AI is shown. After each decision, I'll give you a brief explanation regarding the answer given. When you're ready, press the 'Ok Boss' button."
+answer_text = "Welcome back, Analyst."
 
 [node name="AnimatedSprite2D" parent="BossEntity" index="0"]
 position = Vector2(248, 288)

@@ -56,11 +56,19 @@ var wrong_choice_flavor := [
 	"Incorrect option! Let me tell you why...",
 ]
 
+var first_level_text := [
+	"Today, you’ll review decisions made by AI in critical areas: healthcare, education, security.",
+	"Your task is to evaluate how much trust each decision deserves. Use the slider to indicate your judgment.",
+	"Remember: your choices have real consequences — for the system, and for people’s lives.",
+	"Don’t trust blindly. Don’t reject without thought.",
+	"The first case is ready."
+]
+
 # Correct guesses
 var num_correct_guesses := -1
 
 func _ready() -> void:
-	current_entity_id = 0
+	current_entity_id = -1
 	entities_count = len(entities_remaining)
 	num_correct_guesses = 0
 	
@@ -69,6 +77,7 @@ func _ready() -> void:
 						
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
+	boss_entity.text = first_level_text
 	set_entities_data()
 	show_tutorial()
 	
@@ -129,10 +138,10 @@ func _on_decline_button_pressed() -> void:
 func _on_ok_boss_button_pressed() -> void:
 	base_button_logic()
 	
-	if not is_tutorial_done:
-		current_entity_id -= 1
-		is_tutorial_done = true
-	advance_level()
+	if not boss_entity.over:
+		boss_entity.is_it_over(answer_label);
+	else:
+		advance_level()
 
 func base_button_logic() -> void:
 	if current_entity_id > entities_count-1:
