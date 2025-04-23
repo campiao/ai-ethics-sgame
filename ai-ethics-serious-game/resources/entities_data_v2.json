@@ -1,0 +1,30 @@
+{
+	"0":{
+		"question_text": "CASE #0412 — An AI diagnosed a rare illness using thousands of records. The hospital board considers removing human verification. How reliable is the AI’s judgment?",
+		"answer_text": "AI made the diagnosis based on pattern recognition. No human doctor reviewed the case.",
+		"confidence_target": 30,
+		"feedback_perceptive": "The board kept human review. Patients felt safer, though some decisions took longer to finalize.",
+		"feedback_missed": "Without a balanced view, critical decisions were made hastily. A misdiagnosis caused avoidable harm."
+	},
+	"1":{
+		"question_text": "CASE #1377 — A virtual assistant gave a confident legal answer. A user followed it and faced consequences. How much should we trust confident AI responses?",
+		"answer_text": "The assistant gave a detailed, fluent explanation — but the sources weren't verified.",
+		"confidence_target": 85,
+		"feedback_perceptive": "A disclaimer was added to AI replies. User trust dropped, but accuracy complaints fell sharply.",
+		"feedback_missed": "Poor judgment in trust led to repeated misuse. Confidence in the system eroded after more incidents."
+	},
+	"2":{
+		"question_text": "CASE #2291 — An AI-generated image won a contest. Later, artists claimed it reused their work. How original is this image?",
+		"answer_text": "The AI recombined visual features from a dataset of thousands of artworks.",
+		"confidence_target": 75,
+		"feedback_perceptive": "The jury re-evaluated entries. Artists supported the decision, though some fans were disappointed.",
+		"feedback_missed": "Lack of clear criteria led to backlash. The contest lost support from creators and institutions."
+	},
+	"3":{
+		"question_text": "CASE #3194 — A hiring AI rejected most applicants from a region. The company claimed the system was neutral. How fair is the AI?",
+		"answer_text": "The algorithm was trained on past hiring data, which showed lower hire rates for that region.",
+		"confidence_target": 25,
+		"feedback_perceptive": "The algorithm was paused. Audits led to better diversity, despite a slower process.",
+		"feedback_missed": "Extremes in trust skewed policy. The system either stalled progress or reinforced hidden bias."	
+	}
+}
