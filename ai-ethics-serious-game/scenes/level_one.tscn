@@ -576,7 +576,7 @@ autoplay = "default"
 [node name="PostLevelScreen" parent="." instance=ExtResource("18_w4tp6")]
 visible = false
 good_ending_text = "Congratulations, you had a good error rate! You made sure AI's we hire meet our ethical and moral values!
-As a reward, you have been promoted to Analyst! Ahead lies a new challenge :)"
+As a reward, you have been promoted! Ahead lies a new challenge :)"
 bad_ending_text = "Oh no, you seem to have performed really badly!
 You have another change to correctly identify the unethical AI's. Do not dissapoint us again..."
 
