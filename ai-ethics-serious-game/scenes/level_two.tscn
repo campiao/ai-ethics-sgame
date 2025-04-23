@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://tq7nj7tl5xim"]
+[gd_scene load_steps=20 format=3 uid="uid://tq7nj7tl5xim"]
 
 [ext_resource type="Texture2D" uid="uid://5lgjo5ycxxlw" path="res://assets/sprites/backgrounds/background_level2_dialog.png" id="1_1e7uk"]
 [ext_resource type="Script" uid="uid://p2aeq7anuu3p" path="res://scripts/level_one/level_two/level_2_manager.gd" id="1_4br1q"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="8_ibewu"]
 [ext_resource type="Texture2D" uid="uid://cjkukhtjhw33v" path="res://assets/sprites/backgrounds/background.png" id="9_8imr8"]
 [ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="10_ubnpl"]
+[ext_resource type="Texture2D" uid="uid://dva3te5b1o7q3" path="res://assets/photos/1_ai.jpg" id="11_05hhi"]
 [ext_resource type="Texture2D" uid="uid://c6fai7ks30kvn" path="res://assets/sprites/icon.svg" id="11_sw5gm"]
+[ext_resource type="Texture2D" uid="uid://ca1pp2dfs8ral" path="res://assets/photos/1_real.jpg" id="13_brhlk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3d04n"]
 
@@ -151,7 +153,6 @@ sprite_frames = SubResource("SpriteFrames_qgrtt")
 autoplay = "default"
 
 [node name="UI_Images" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -168,12 +169,51 @@ texture = ExtResource("9_8imr8")
 [node name="ImageLeft" type="Sprite2D" parent="UI_Images"]
 position = Vector2(339, 357.5)
 scale = Vector2(2.29688, 2.30469)
-texture = ExtResource("11_sw5gm")
+
+[node name="Control" type="Control" parent="UI_Images/ImageLeft"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="UI_Images/ImageLeft/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_05hhi")
+expand_mode = 2
 
 [node name="ImageRight" type="Sprite2D" parent="UI_Images"]
 position = Vector2(741, 355.5)
 scale = Vector2(2.29688, 2.30469)
 texture = ExtResource("11_sw5gm")
+
+[node name="Control" type="Control" parent="UI_Images/ImageRight"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI_Images/ImageRight/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_brhlk")
+expand_mode = 2
 
 [node name="CanvasLayer" parent="." instance=ExtResource("10_ubnpl")]
 visible = false
