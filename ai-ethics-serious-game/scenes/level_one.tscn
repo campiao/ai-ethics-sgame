@@ -1,7 +1,7 @@
-[gd_scene load_steps=76 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=80 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
-[ext_resource type="Texture2D" uid="uid://5b5rip8a66h8" path="res://assets/sprites/backgrounds/game.png" id="1_cd1xg"]
+[ext_resource type="Texture2D" uid="uid://dh53xs0yn3epg" path="res://assets/sprites/backgrounds/gane_without_btns.png" id="2_rqtnr"]
 [ext_resource type="FontFile" uid="uid://c0rkxsutw6wpa" path="res://assets/fonts/Pixel Square 10.ttf" id="2_t18mc"]
 [ext_resource type="FontFile" uid="uid://c06okaskmctv1" path="res://assets/fonts/Pixel Square Bold10.ttf" id="3_843q2"]
 [ext_resource type="Texture2D" uid="uid://bq1u8j51cavyb" path="res://assets/sprites/accept_button/accept_button.tres" id="4_4p75b"]
@@ -12,7 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cfy3agnxwe5l7" path="res://assets/sprites/okboss_button/okboss_button.tres" id="9_4i3tx"]
 [ext_resource type="Texture2D" uid="uid://bejj2h5of3ogb" path="res://assets/sprites/okboss_button/okboss_btn.png" id="9_lgrt7"]
 [ext_resource type="Texture2D" uid="uid://cqte82qp8p7di" path="res://assets/sprites/robots/robot2/robot2.png" id="10_o5wbv"]
-[ext_resource type="Theme" uid="uid://dvra0q48n37vm" path="res://assets/sprites/slider/slider.tres" id="11_itxlw"]
+[ext_resource type="Texture2D" uid="uid://c1bl57mpl8khb" path="res://assets/sprites/slider/slider_groove.png" id="11_itxlw"]
+[ext_resource type="Texture2D" uid="uid://cvfgcfy5b3ee1" path="res://assets/sprites/slider/slider_grabber.png" id="11_rqtnr"]
 [ext_resource type="Texture2D" uid="uid://bvwqidwahupa1" path="res://assets/sprites/robots/robot3/robot3.png" id="11_s6ikc"]
 [ext_resource type="Texture2D" uid="uid://bwctnn03pxawh" path="res://assets/sprites/robots/robot4/robot4.png" id="12_036lt"]
 [ext_resource type="Texture2D" uid="uid://dlqctt8jucxih" path="res://assets/sprites/robots/robot1/robot.png" id="13_nlxio"]
@@ -46,6 +47,17 @@ region = Rect2(204, 0, 102, 44)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cok0"]
 atlas = ExtResource("9_lgrt7")
 region = Rect2(102, 0, 102, 44)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rqtnr"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("11_itxlw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfeen"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqtnr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_036lt"]
 atlas = ExtResource("10_o5wbv")
@@ -403,7 +415,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_cd1xg")
+texture = ExtResource("2_rqtnr")
 
 [node name="AnswerLabel" type="Label" parent="UI"]
 layout_mode = 0
@@ -438,12 +450,11 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="AcceptButton" type="TextureButton" parent="UI"]
-visible = false
 layout_mode = 0
-offset_left = 196.0
-offset_top = 425.0
-offset_right = 298.0
-offset_bottom = 469.0
+offset_left = 235.0
+offset_top = 458.0
+offset_right = 337.0
+offset_bottom = 502.0
 texture_normal = ExtResource("4_4p75b")
 texture_pressed = SubResource("AtlasTexture_y8ti4")
 texture_hover = SubResource("AtlasTexture_4p75b")
@@ -507,28 +518,34 @@ offset_left = 196.0
 offset_top = 490.0
 offset_right = 298.0
 offset_bottom = 534.0
+disabled = true
 texture_normal = ExtResource("7_y8ti4")
 texture_pressed = SubResource("AtlasTexture_o5wbv")
 texture_hover = SubResource("AtlasTexture_s6ikc")
 
 [node name="OkBossButton" type="TextureButton" parent="UI"]
-visible = false
 layout_mode = 0
-offset_left = 196.0
-offset_top = 455.0
-offset_right = 298.0
-offset_bottom = 499.0
+offset_left = 235.0
+offset_top = 458.0
+offset_right = 337.0
+offset_bottom = 502.0
 texture_normal = ExtResource("9_4i3tx")
 texture_pressed = SubResource("AtlasTexture_y1l25")
 texture_hover = SubResource("AtlasTexture_5cok0")
 
 [node name="HSlider" type="HSlider" parent="UI"]
 layout_mode = 0
-offset_left = 206.0
-offset_top = 575.0
-offset_right = 878.0
-offset_bottom = 607.0
-theme = ExtResource("11_itxlw")
+offset_left = 176.0
+offset_top = 571.0
+offset_right = 355.0
+offset_bottom = 603.0
+rotation = -1.57079
+theme_override_icons/grabber = ExtResource("11_rqtnr")
+theme_override_icons/grabber_highlight = ExtResource("11_rqtnr")
+theme_override_icons/grabber_disabled = ExtResource("11_rqtnr")
+theme_override_styles/slider = SubResource("StyleBoxTexture_rqtnr")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_vfeen")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_rqtnr")
 
 [node name="Entities" type="Node2D" parent="."]
 visible = false

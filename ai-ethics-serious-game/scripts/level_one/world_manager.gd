@@ -6,8 +6,6 @@ extends Node2D
 
 # Background
 @onready var background_image: TextureRect = $UI/BackgroundImage
-@onready var two_btn_bg_image := preload("res://assets/sprites/backgrounds/game.png")
-@onready var one_btn_bg_image := preload("res://assets/sprites/backgrounds/game_one_btn.png")
 
 # Entity nodes
 @onready var entity_sprite: AnimatedSprite2D = $UI/EntitySprite
@@ -167,8 +165,6 @@ func check_is_answer_correct(button_truth : bool) -> bool:
 	return is_choice_correct
 
 func advance_to_boss_screen() -> void:
-	#background_image.texture.reset_state()
-	background_image.texture = one_btn_bg_image
 	accept_button.hide()
 	decline_button.hide()
 	ok_boss_button.show()
@@ -178,7 +174,6 @@ func advance_to_normal_screen() -> void:
 	ok_boss_button.hide()
 	accept_button.show()
 	decline_button.show()
-	background_image.texture = two_btn_bg_image
 
 func setup_boss_text(entity_data: EntityType,
 	is_choice_correct: bool) -> void:
