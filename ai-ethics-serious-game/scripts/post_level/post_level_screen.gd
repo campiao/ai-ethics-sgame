@@ -47,7 +47,7 @@ func set_stats_results(score_result, num_entities : int) -> void:
 	# TODO: add perfect and missed choice stats
 	score_value = score_result
 	entities_count = num_entities
-	error_percentage = float(num_entities*2 - score_value)/(num_entities*2)
+	error_percentage = 1.0 - float(num_entities*2 - score_value)/(num_entities*2)
 	set_text_to_display()
 	
 func set_text_to_display() -> void:
@@ -65,7 +65,7 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action("left_mouse_btn_clicked") and \
 		current_id == num_text_remaining:
 			# NOTE: check for success, change to corresponding scene!
-			if error_percentage > 0.51:
+			if error_percentage > 0.71:
 				StaticData.entities_dict = StaticData.load_json_file("res://resources/entities_data_v2_2.json")
 				get_tree().change_scene_to_file("res://scenes/level_one.tscn")
 			else:

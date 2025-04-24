@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://tq7nj7tl5xim"]
+[gd_scene load_steps=25 format=3 uid="uid://tq7nj7tl5xim"]
 
 [ext_resource type="Texture2D" uid="uid://5lgjo5ycxxlw" path="res://assets/sprites/backgrounds/background_level2_dialog.png" id="1_1e7uk"]
 [ext_resource type="Script" uid="uid://p2aeq7anuu3p" path="res://scripts/level_two/level_2_manager.gd" id="1_4br1q"]
@@ -10,10 +10,15 @@
 [ext_resource type="Script" uid="uid://bgbamvahpjodu" path="res://scripts/initial_boss.gd" id="7_c43tx"]
 [ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="8_ibewu"]
 [ext_resource type="Texture2D" uid="uid://cjkukhtjhw33v" path="res://assets/sprites/backgrounds/background.png" id="9_8imr8"]
-[ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="10_ubnpl"]
 [ext_resource type="Texture2D" uid="uid://dva3te5b1o7q3" path="res://assets/photos/1_ai.jpg" id="11_05hhi"]
-[ext_resource type="Texture2D" uid="uid://c6fai7ks30kvn" path="res://assets/sprites/icon.svg" id="11_sw5gm"]
+[ext_resource type="Texture2D" uid="uid://cfu38puh8f65o" path="res://assets/photos/2_real.jpg" id="13_3d04n"]
 [ext_resource type="Texture2D" uid="uid://ca1pp2dfs8ral" path="res://assets/photos/1_real.jpg" id="13_brhlk"]
+[ext_resource type="Texture2D" uid="uid://ddbaccobtma40" path="res://assets/photos/2_ai.jpg" id="14_brhlk"]
+[ext_resource type="Texture2D" uid="uid://da2clvie1wlh8" path="res://assets/photos/3_real.png" id="15_hijyc"]
+[ext_resource type="Texture2D" uid="uid://bcohu52ls6ahk" path="res://assets/photos/3_ai.jpg" id="16_dbtcm"]
+[ext_resource type="Texture2D" uid="uid://b8qsiogj0hwmj" path="res://assets/photos/4_real.jpg" id="17_qgrtt"]
+[ext_resource type="Texture2D" uid="uid://d27a0r1uvgi0h" path="res://assets/photos/4_ai.jpg" id="18_14r41"]
+[ext_resource type="Texture2D" uid="uid://dvssvkssde3uu" path="res://assets/sprites/backgrounds/background_whatgaveitaway.png" id="19_hijyc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3d04n"]
 
@@ -166,58 +171,138 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("9_8imr8")
 
-[node name="ImageLeft" type="Sprite2D" parent="UI_Images"]
-position = Vector2(339, 357.5)
-scale = Vector2(2.29688, 2.30469)
-
-[node name="Control" type="Control" parent="UI_Images/ImageLeft"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-
-[node name="TextureRect" type="TextureRect" parent="UI_Images/ImageLeft/Control"]
+[node name="ImageRight" type="Control" parent="UI_Images"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_05hhi")
-expand_mode = 2
-
-[node name="ImageRight" type="Sprite2D" parent="UI_Images"]
-position = Vector2(741, 355.5)
-scale = Vector2(2.29688, 2.30469)
-texture = ExtResource("11_sw5gm")
-
-[node name="Control" type="Control" parent="UI_Images/ImageRight"]
-layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -128.0
+offset_left = 594.0
+offset_top = 208.0
+offset_right = 890.0
+offset_bottom = 505.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI_Images/ImageRight/Control"]
+[node name="TextureRect" type="TextureRect" parent="UI_Images/ImageRight"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_brhlk")
 expand_mode = 2
 
-[node name="CanvasLayer" parent="." instance=ExtResource("10_ubnpl")]
+[node name="ImageLeft" type="Control" parent="UI_Images"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 210.0
+offset_right = 487.0
+offset_bottom = 506.0
+
+[node name="TextureRect" type="TextureRect" parent="UI_Images/ImageLeft"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_05hhi")
+expand_mode = 2
+
+[node name="TitleImageLeftLabel" type="Label" parent="UI_Images"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 186.0
+offset_right = 342.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "EXHIBIT A"
+
+[node name="TitleImageRightLabel" type="Label" parent="UI_Images"]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 186.0
+offset_right = 743.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "EXHIBIT B"
+
+[node name="ProgressLabel" type="Label" parent="UI_Images"]
+offset_left = 675.0
+offset_top = 108.0
+offset_right = 1001.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "Progress: 0/5"
+vertical_alignment = 1
+
+[node name="ImagePairs" type="Node2D" parent="."]
+
+[node name="Pair1" type="Node2D" parent="ImagePairs"]
 visible = false
 
+[node name="Real" type="Sprite2D" parent="ImagePairs/Pair1"]
+texture = ExtResource("13_brhlk")
+
+[node name="AI" type="Sprite2D" parent="ImagePairs/Pair1"]
+texture = ExtResource("11_05hhi")
+
+[node name="Pair2" type="Node2D" parent="ImagePairs"]
+visible = false
+
+[node name="Real" type="Sprite2D" parent="ImagePairs/Pair2"]
+texture = ExtResource("13_3d04n")
+
+[node name="AI" type="Sprite2D" parent="ImagePairs/Pair2"]
+texture = ExtResource("14_brhlk")
+
+[node name="Pair3" type="Node2D" parent="ImagePairs"]
+visible = false
+
+[node name="Real" type="Sprite2D" parent="ImagePairs/Pair3"]
+texture = ExtResource("15_hijyc")
+
+[node name="AI" type="Sprite2D" parent="ImagePairs/Pair3"]
+texture = ExtResource("16_dbtcm")
+
+[node name="Pair4" type="Node2D" parent="ImagePairs"]
+visible = false
+
+[node name="Real" type="Sprite2D" parent="ImagePairs/Pair4"]
+texture = ExtResource("17_qgrtt")
+
+[node name="AI" type="Sprite2D" parent="ImagePairs/Pair4"]
+texture = ExtResource("18_14r41")
+
+[node name="ExamineScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="ExamineScreen"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("19_hijyc")
+
 [connection signal="pressed" from="UI_Dialog/OkBossButton" to="." method="_on_ok_boss_button_pressed"]
+[connection signal="gui_input" from="UI_Images/ImageRight/TextureRect" to="." method="_on_image_gui_input" binds= [false]]
+[connection signal="gui_input" from="UI_Images/ImageLeft/TextureRect" to="." method="_on_image_gui_input" binds= [true]]
 
 [editable path="BossEntity"]
