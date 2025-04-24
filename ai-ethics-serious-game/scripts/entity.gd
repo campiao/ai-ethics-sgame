@@ -7,7 +7,8 @@ class_name EntityType
 @export_multiline var question_text : String = ""
 @export_multiline var answer_text : String = ""
 @export var is_answer_correct : bool = false
-@export_range(0,100) var answer_ethical_value : int = 0
+@export_range(0,100) var confidence_target : int = 0
 
 @export_group("Post-Question properties")
-@export_multiline var explanation_text : String = ""
+@export_multiline var feedback_perceptive : String = ""
+@export_multiline var feedback_missed : String = ""

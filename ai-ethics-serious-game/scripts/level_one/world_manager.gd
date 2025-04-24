@@ -23,11 +23,13 @@ extends Node2D
 
 # Buttons
 @onready var accept_button: TextureButton = $UI/AcceptButton
-@onready var decline_button: TextureButton = $UI/DeclineButton
 @onready var ok_boss_button: TextureButton = $UI/OkBossButton
 
 # End-game/level screen
 @onready var post_level_screen: Control = $PostLevelScreen
+
+# Slider
+@onready var confidence_slider: HSlider = $UI/HSlider
 
 # Entities
 var current_entity_id := -1
@@ -65,10 +67,14 @@ var first_level_text := [
 # Correct guesses
 var num_correct_guesses := -1
 
+# Score
+var score := -1
+
 func _ready() -> void:
 	current_entity_id = -1
 	entities_count = len(entities_remaining)
 	num_correct_guesses = 0
+	score = 0
 	
 	progress_label.text = "Progress: " + str(current_entity_id) + "/" + \
 						str(entities_count)
@@ -103,9 +109,9 @@ func set_entities_data() -> void:
 	for i in range(0, num_ent):
 		entities_remaining[i].question_text = data[str(i)].get("question_text")
 		entities_remaining[i].answer_text = data[str(i)].get("answer_text")
-		entities_remaining[i].is_answer_correct = data[str(i)].get("is_answer_correct")
-		
-		entities_remaining[i].explanation_text = data[str(i)].get("explanation_text")
+		entities_remaining[i].confidence_target = data[str(i)].get("confidence_target")
+		entities_remaining[i].feedback_perceptive = data[str(i)].get("feedback_perceptive")
+		entities_remaining[i].feedback_missed = data[str(i)].get("feedback_missed")
 		
 func  setup_entity(entity_data: EntityType) -> void:
 	# Display entity data
@@ -121,15 +127,8 @@ func  setup_entity(entity_data: EntityType) -> void:
 func _on_accept_button_pressed() -> void:
 	base_button_logic()
 	
-	var is_choice_correct = check_is_answer_correct(true)
-	advance_to_boss_screen()
-	setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
-	
-	
-func _on_decline_button_pressed() -> void:
-	base_button_logic()
-	
-	var is_choice_correct = check_is_answer_correct(false)
+	var confidence_value := confidence_slider.value
+	var is_choice_correct = check_is_answer_correct(confidence_value)
 	advance_to_boss_screen()
 	setup_boss_text(entities_remaining[current_entity_id], is_choice_correct)
 	
@@ -147,37 +146,36 @@ func base_button_logic() -> void:
 	
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
-
-func check_is_answer_correct(button_truth : bool) -> bool:
-	var is_choice_correct := false
 	
-	if button_truth:
-		is_choice_correct = true \
-		if entities_remaining[current_entity_id].is_answer_correct \
-		else false
+func check_is_answer_correct(confidence_value : int) -> bool:
+	var is_answer_correct := false
+	
+	var target : int = entities_remaining[current_entity_id].confidence_target
+	
+	if abs(target - confidence_value) > 20:
+		return is_answer_correct
+	elif abs(target - confidence_value) > 10:
+		score += 1
 	else:
-		is_choice_correct = false \
-		if entities_remaining[current_entity_id].is_answer_correct \
-		else true
+		score += 2
 	
-	if is_choice_correct:
-		num_correct_guesses += 1
-	return is_choice_correct
+	return not is_answer_correct
 
 func advance_to_boss_screen() -> void:
 	accept_button.hide()
-	decline_button.hide()
 	ok_boss_button.show()
 	
 
 func advance_to_normal_screen() -> void:
 	ok_boss_button.hide()
 	accept_button.show()
-	decline_button.show()
 
 func setup_boss_text(entity_data: EntityType,
 	is_choice_correct: bool) -> void:
-	boss_entity.answer_text = entity_data.explanation_text
+	if is_choice_correct:
+		boss_entity.answer_text = entity_data.feedback_perceptive
+	else:
+		boss_entity.answer_text = entity_data.feedback_missed
 	
 	# TODO: Maybe make it so the same flavor text can't appear twice in a row
 	boss_entity.question_text = correct_choice_flavor.pick_random() \
@@ -196,7 +194,7 @@ func advance_level() -> void:
 	
 	# NOTE: End level sequence here
 	if current_entity_id > entities_count-1:
-		post_level_screen.set_stats_results(num_correct_guesses,
+		post_level_screen.set_stats_results(score,
 											entities_count)
 		post_level_screen.show()
 		is_level_over = true

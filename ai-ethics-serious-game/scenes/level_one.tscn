@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=76 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://dh53xs0yn3epg" path="res://assets/sprites/backgrounds/gane_without_btns.png" id="2_rqtnr"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bq1u8j51cavyb" path="res://assets/sprites/accept_button/accept_button.tres" id="4_4p75b"]
 [ext_resource type="Texture2D" uid="uid://rf5wxqp1jvl0" path="res://assets/sprites/accept_button/accept_btn.png" id="4_bhu28"]
 [ext_resource type="PackedScene" uid="uid://dv67oa1x7ubls" path="res://scenes/entity.tscn" id="5_r4wdr"]
-[ext_resource type="Texture2D" uid="uid://dd21mstu6o8wh" path="res://assets/sprites/decline_button/decline_button.tres" id="7_y8ti4"]
-[ext_resource type="Texture2D" uid="uid://cmvsrrwks5xlg" path="res://assets/sprites/decline_button/decline_btn.png" id="8_astit"]
 [ext_resource type="Texture2D" uid="uid://cfy3agnxwe5l7" path="res://assets/sprites/okboss_button/okboss_button.tres" id="9_4i3tx"]
 [ext_resource type="Texture2D" uid="uid://bejj2h5of3ogb" path="res://assets/sprites/okboss_button/okboss_btn.png" id="9_lgrt7"]
 [ext_resource type="Texture2D" uid="uid://cqte82qp8p7di" path="res://assets/sprites/robots/robot2/robot2.png" id="10_o5wbv"]
@@ -31,14 +29,6 @@ atlas = ExtResource("4_bhu28")
 region = Rect2(102, 0, 102, 44)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_astit"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o5wbv"]
-atlas = ExtResource("8_astit")
-region = Rect2(204, 0, 102, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s6ikc"]
-atlas = ExtResource("8_astit")
-region = Rect2(102, 0, 102, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1l25"]
 atlas = ExtResource("9_lgrt7")
@@ -511,18 +501,6 @@ theme_override_font_sizes/font_size = 20
 text = "Progress: 0/5"
 vertical_alignment = 1
 
-[node name="DeclineButton" type="TextureButton" parent="UI"]
-visible = false
-layout_mode = 0
-offset_left = 196.0
-offset_top = 490.0
-offset_right = 298.0
-offset_bottom = 534.0
-disabled = true
-texture_normal = ExtResource("7_y8ti4")
-texture_pressed = SubResource("AtlasTexture_o5wbv")
-texture_hover = SubResource("AtlasTexture_s6ikc")
-
 [node name="OkBossButton" type="TextureButton" parent="UI"]
 layout_mode = 0
 offset_left = 235.0
@@ -566,7 +544,6 @@ sprite_frames = SubResource("SpriteFrames_3s2d1")
 entity_name = "NotGPT"
 question_text = "MUSSHIMAISI asdasd asd"
 answer_text = "asdad fdfsdg asd "
-explanation_text = "asfgjtrsdh "
 
 [node name="AnimatedSprite2D" parent="Entities/Entity3" index="0"]
 sprite_frames = SubResource("SpriteFrames_4mjax")
@@ -600,7 +577,6 @@ bad_ending_text = "Oh no, you seem to have performed really badly!
 You have another change to correctly identify the unethical AI's. Do not dissapoint us again..."
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
-[connection signal="pressed" from="UI/DeclineButton" to="." method="_on_decline_button_pressed"]
 [connection signal="pressed" from="UI/OkBossButton" to="." method="_on_ok_boss_button_pressed"]
 
 [editable path="Entities/Entity1"]

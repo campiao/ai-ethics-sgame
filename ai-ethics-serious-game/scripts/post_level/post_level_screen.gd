@@ -13,7 +13,7 @@ extends Control
 var current_id := -1
 var num_text_remaining := -1
 
-var correct_guesses := -1
+var score_value := -1
 var error_percentage := -1.0
 var entities_count := -1
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 		elem.visible_ratio = 0.0
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if current_id > num_text_remaining -1:
 		return
 	if visible:
@@ -43,18 +43,19 @@ func draw_text_component(id: int) -> bool:
 		1.0/text_components[id].text.length()/text_update_speed
 	return false
 	
-func set_stats_results(num_correct_guesses, num_entities : int) -> void:
-	correct_guesses = num_correct_guesses
+func set_stats_results(score_result, num_entities : int) -> void:
+	# TODO: add perfect and missed choice stats
+	score_value = score_result
 	entities_count = num_entities
-	error_percentage = float(num_entities - num_correct_guesses)/num_entities
+	error_percentage = float(num_entities*2 - score_value)/(num_entities*2)
 	set_text_to_display()
 	
 func set_text_to_display() -> void:
-	text_correct_guesses.text = "Correct guesses: "+str(correct_guesses) + \
-								"/"+str(entities_count)
-	text_error_percentage.text = "Error percentage: "+ \
+	text_correct_guesses.text = "Total score: "+str(score_value) + \
+								"/"+str(entities_count * 2)
+	text_error_percentage.text = "Percentage of total possible score: "+ \
 								str(error_percentage*100) + "%"
-	if error_percentage > 0.51:
+	if error_percentage > 0.71:
 		text_end_level.text = bad_ending_text
 	else:
 		text_end_level.text = good_ending_text
@@ -65,7 +66,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		current_id == num_text_remaining:
 			# NOTE: check for success, change to corresponding scene!
 			if error_percentage > 0.51:
-				StaticData.entities_dict = StaticData.load_json_file("res://resources/entities_data_2.json")
+				StaticData.entities_dict = StaticData.load_json_file("res://resources/entities_data_v2_2.json")
 				get_tree().change_scene_to_file("res://scenes/level_one.tscn")
 			else:
 				get_tree().change_scene_to_file("res://scenes/level_two.tscn")

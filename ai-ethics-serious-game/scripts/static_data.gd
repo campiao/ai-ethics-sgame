@@ -1,10 +1,9 @@
 extends Node
 
 var entities_dict := {}
-var data_path := "res://resources/entities_data.json"
 
 func _ready() -> void:
-	entities_dict = load_json_file(data_path)
+	entities_dict = load_json_file("res://resources/entities_data_v2.json")
 
 func load_json_file(filePath: String):
 	if FileAccess.file_exists(filePath):
