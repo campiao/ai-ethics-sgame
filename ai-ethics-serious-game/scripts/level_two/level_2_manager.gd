@@ -45,8 +45,11 @@ var level_2_transition_dialogue = [
 	"Your mission is clear: determine what’s real and what’s been manipulated.",
 	"Use your judgment; what you see may not be what it seems.",
 	"Blind trust can be the greatest lie.",
-	"Level 2 begins now."
+	"Level 2 begins now.",
+	" "
 ]
+
+var is_audio_playing := false
 
 func _ready() -> void:
 	boss_entity.text = level_2_transition_dialogue
@@ -63,11 +66,18 @@ func _process(_delta: float) -> void:
 		return
 	else:
 		if question_label.visible_ratio < 1.0:
+			if not is_audio_playing:
+				$SFX/RobotTalk.play()
+				is_audio_playing = true
 			question_label.visible_ratio += \
 			1.0/question_label.text.length()/text_update_speed
 		elif answer_label.visible_ratio < 1.0:
 			answer_label.visible_ratio += \
 			1.0/answer_label.text.length()/text_update_speed
+		else:
+			if is_audio_playing:
+				$SFX/RobotTalk.stop()
+				is_audio_playing = false
 
 func set_up_images() -> void:
 	if possible_image_pairs.is_empty():
@@ -95,6 +105,7 @@ func set_up_images() -> void:
 
 func _on_ok_boss_button_pressed() -> void:
 	base_button_logic();
+	$SFX/ClickSound.play()
 	boss_entity.is_it_over(answer_label);
 	if boss_entity.over:
 		advance_level()
@@ -105,6 +116,9 @@ func base_button_logic() -> void:
 	
 
 func advance_level() -> void:
+	if is_audio_playing:
+		$SFX/RobotTalk.stop()
+		is_audio_playing = false
 	main_level.visible = true
 	progress_label.visible = true
 	set_up_images()
@@ -131,6 +145,7 @@ func _on_image_gui_input(event: InputEvent, is_left_image: bool) -> void:
 		return
 	if event.is_action("left_mouse_btn_clicked"):
 		print("clicked on the image!")
+		$SFX/ClickSound.play()
 		is_image_clicked = true
 		if (is_left_image and is_left_image_ai) or (not is_left_image and not is_left_image_ai):
 			advance_to_examine_screen()

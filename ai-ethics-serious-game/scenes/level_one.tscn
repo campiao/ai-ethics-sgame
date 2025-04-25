@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=78 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://dh53xs0yn3epg" path="res://assets/sprites/backgrounds/gane_without_btns.png" id="2_rqtnr"]
@@ -13,12 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://c1bl57mpl8khb" path="res://assets/sprites/slider/slider_groove.png" id="11_itxlw"]
 [ext_resource type="Texture2D" uid="uid://cvfgcfy5b3ee1" path="res://assets/sprites/slider/slider_grabber.png" id="11_rqtnr"]
 [ext_resource type="Texture2D" uid="uid://bvwqidwahupa1" path="res://assets/sprites/robots/robot3/robot3.png" id="11_s6ikc"]
+[ext_resource type="AudioStream" uid="uid://c4paablie64ki" path="res://assets/sfx/button_press.wav" id="11_vfeen"]
 [ext_resource type="Texture2D" uid="uid://bwctnn03pxawh" path="res://assets/sprites/robots/robot4/robot4.png" id="12_036lt"]
 [ext_resource type="Texture2D" uid="uid://dlqctt8jucxih" path="res://assets/sprites/robots/robot1/robot.png" id="13_nlxio"]
 [ext_resource type="Texture2D" uid="uid://bfpykuc11r6a5" path="res://assets/sprites/chappell_boss_img.jpg" id="14_xrbqg"]
 [ext_resource type="Script" uid="uid://bgbamvahpjodu" path="res://scripts/initial_boss.gd" id="16_unjau"]
 [ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="17_4i3tx"]
 [ext_resource type="PackedScene" uid="uid://blev1wfj3lj3b" path="res://scenes/post_level_screen.tscn" id="18_w4tp6"]
+[ext_resource type="AudioStream" uid="uid://cekkbgj0yf847" path="res://assets/sfx/robot_text.wav" id="21_t3lbx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8ti4"]
 atlas = ExtResource("4_bhu28")
@@ -575,6 +577,15 @@ good_ending_text = "Congratulations, your score met our minimum standards! Your 
 As a reward, you have been promoted! Ahead lies a new challenge :)"
 bad_ending_text = "Oh no, you seem to have performed really badly!
 However, we will give you another chance to prove your worth. Do not dissapoint us again..."
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_vfeen")
+
+[node name="RobotTalk" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("21_t3lbx")
+volume_db = -12.023
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/OkBossButton" to="." method="_on_ok_boss_button_pressed"]

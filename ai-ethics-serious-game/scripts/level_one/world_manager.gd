@@ -66,7 +66,7 @@ var first_level_text := [
 
 # Correct guesses
 var num_correct_guesses := -1
-
+var is_audio_playing := false
 # Score
 var score := -1
 
@@ -92,11 +92,21 @@ func _process(_delta: float) -> void:
 		setup_entity(entities_remaining[current_entity_id])
 	else:
 		if question_label.visible_ratio < 1.0:
+			if not is_audio_playing:
+				$SFX/RobotTalk.play()
+				is_audio_playing = true
+				
 			question_label.visible_ratio += \
 			1.0/question_label.text.length()/text_update_speed
+			
 		elif answer_label.visible_ratio < 1.0:
+
 			answer_label.visible_ratio += \
 			1.0/answer_label.text.length()/text_update_speed
+		else:
+			if is_audio_playing:
+				$SFX/RobotTalk.stop()
+				is_audio_playing = false
 	
 func set_entities_data() -> void:
 	var data = StaticData.entities_dict
@@ -126,7 +136,7 @@ func  setup_entity(entity_data: EntityType) -> void:
 
 func _on_accept_button_pressed() -> void:
 	base_button_logic()
-	
+	$SFX/ClickSound.play()
 	var confidence_value := confidence_slider.value
 	var is_choice_correct = check_is_answer_correct(confidence_value)
 	advance_to_boss_screen()
@@ -134,7 +144,7 @@ func _on_accept_button_pressed() -> void:
 	
 func _on_ok_boss_button_pressed() -> void:
 	base_button_logic()
-	
+	$SFX/ClickSound.play()
 	if not boss_entity.over:
 		boss_entity.is_it_over(answer_label);
 	else:
@@ -203,6 +213,9 @@ func advance_level() -> void:
 	
 	# NOTE: End level sequence here
 	if current_entity_id > entities_count-1:
+		if is_audio_playing:
+			$SFX/RobotTalk.stop()
+			is_audio_playing = false
 		post_level_screen.set_stats_results(score,
 											entities_count)
 		post_level_screen.show()
