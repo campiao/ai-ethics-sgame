@@ -571,10 +571,10 @@ autoplay = "default"
 
 [node name="PostLevelScreen" parent="." instance=ExtResource("18_w4tp6")]
 visible = false
-good_ending_text = "Congratulations, you had a good error rate! You made sure AI's we hire meet our ethical and moral values!
+good_ending_text = "Congratulations, your score met our minimum standards! Your actions had a positive impact in the world.
 As a reward, you have been promoted! Ahead lies a new challenge :)"
 bad_ending_text = "Oh no, you seem to have performed really badly!
-You have another change to correctly identify the unethical AI's. Do not dissapoint us again..."
+However, we will give you another chance to prove your worth. Do not dissapoint us again..."
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/OkBossButton" to="." method="_on_ok_boss_button_pressed"]

@@ -8,7 +8,7 @@
 	},
 	"1":{
 		"question_text": "CASE #1377 — A virtual assistant gave a confident legal answer. A user followed it and faced consequences. How much should we trust confident AI responses?",
-		"answer_text": "The assistant gave a detailed, fluent explanation — but the sources weren't verified.",
+		"answer_text": "The assistant gave a detailed, fluent explanation, but the sources weren't verified.",
 		"confidence_target": 85,
 		"feedback_perceptive": "A disclaimer was added to AI replies. User trust dropped, but accuracy complaints fell sharply.",
 		"feedback_missed": "Poor judgment in trust led to repeated misuse. Confidence in the system eroded after more incidents."

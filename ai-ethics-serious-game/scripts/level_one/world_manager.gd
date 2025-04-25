@@ -59,7 +59,7 @@ var wrong_choice_flavor := [
 var first_level_text := [
 	"Today, you’ll review decisions made by AI in critical areas: healthcare, education, security.",
 	"Your task is to evaluate how much trust each decision deserves. Use the slider to indicate your judgment.",
-	"Remember: your choices have real consequences — for the system, and for people’s lives.",
+	"Remember: your choices have real consequences for the system, and for people’s lives.",
 	"Don’t trust blindly. Don’t reject without thought.",
 	"The first case is ready."
 ]
@@ -138,6 +138,7 @@ func _on_ok_boss_button_pressed() -> void:
 	if not boss_entity.over:
 		boss_entity.is_it_over(answer_label);
 	else:
+		$UI/TitleQuestionLabel.visible = true
 		advance_level()
 
 func base_button_logic() -> void:
@@ -165,10 +166,15 @@ func advance_to_boss_screen() -> void:
 	accept_button.hide()
 	ok_boss_button.show()
 	
+	
+	
 
 func advance_to_normal_screen() -> void:
 	ok_boss_button.hide()
 	accept_button.show()
+	
+	$UI/TitleAnswerLabel.text = "DETAILS"
+	$UI/TitleQuestionLabel.text = "SUMMARY"
 
 func setup_boss_text(entity_data: EntityType,
 	is_choice_correct: bool) -> void:
@@ -176,6 +182,9 @@ func setup_boss_text(entity_data: EntityType,
 		boss_entity.answer_text = entity_data.feedback_perceptive
 	else:
 		boss_entity.answer_text = entity_data.feedback_missed
+	
+	$UI/TitleAnswerLabel.text = "EFFECT"
+	$UI/TitleQuestionLabel.text = "ANSWER"
 	
 	# TODO: Maybe make it so the same flavor text can't appear twice in a row
 	boss_entity.question_text = correct_choice_flavor.pick_random() \
@@ -203,5 +212,7 @@ func advance_level() -> void:
 	is_entity_visible = false
 
 func show_tutorial() -> void:
+	$UI/TitleAnswerLabel.text = "MESSAGE"
+	$UI/TitleQuestionLabel.visible = false
 	advance_to_boss_screen()
 	setup_entity(boss_entity)
