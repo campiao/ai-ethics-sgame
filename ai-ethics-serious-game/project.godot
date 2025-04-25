@@ -18,6 +18,7 @@ config/icon="res://assets/sprites/icon.svg"
 [autoload]
 
 StaticData="*res://scripts/static_data.gd"
+Global="*res://scripts/Global.gd"
 
 [display]
 

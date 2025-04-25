@@ -219,6 +219,7 @@ func advance_level() -> void:
 		post_level_screen.set_stats_results(score,
 											entities_count)
 		post_level_screen.show()
+		Global.level_one_complete = true;
 		is_level_over = true
 		return
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://1yd6cqf4yvpg"]
+[gd_scene load_steps=79 format=3 uid="uid://1yd6cqf4yvpg"]
 
 [ext_resource type="Script" uid="uid://ch7uvxcbp3buy" path="res://scripts/level_one/world_manager.gd" id="1_5rfim"]
 [ext_resource type="Texture2D" uid="uid://dh53xs0yn3epg" path="res://assets/sprites/backgrounds/gane_without_btns.png" id="2_rqtnr"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c1bl57mpl8khb" path="res://assets/sprites/slider/slider_groove.png" id="11_itxlw"]
 [ext_resource type="Texture2D" uid="uid://cvfgcfy5b3ee1" path="res://assets/sprites/slider/slider_grabber.png" id="11_rqtnr"]
 [ext_resource type="Texture2D" uid="uid://bvwqidwahupa1" path="res://assets/sprites/robots/robot3/robot3.png" id="11_s6ikc"]
+[ext_resource type="Script" uid="uid://c2msqnbwtmkkb" path="res://scripts/main_menu/back_btn.gd" id="11_t3lbx"]
 [ext_resource type="AudioStream" uid="uid://c4paablie64ki" path="res://assets/sfx/button_press.wav" id="11_vfeen"]
 [ext_resource type="Texture2D" uid="uid://bwctnn03pxawh" path="res://assets/sprites/robots/robot4/robot4.png" id="12_036lt"]
 [ext_resource type="Texture2D" uid="uid://dlqctt8jucxih" path="res://assets/sprites/robots/robot1/robot.png" id="13_nlxio"]
@@ -527,6 +528,14 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_rqtnr")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_vfeen")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_rqtnr")
 
+[node name="MenuBtn" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 102.0
+offset_right = 151.0
+offset_bottom = 127.0
+script = ExtResource("11_t3lbx")
+
 [node name="Entities" type="Node2D" parent="."]
 visible = false
 
@@ -589,6 +598,7 @@ volume_db = -12.023
 
 [connection signal="pressed" from="UI/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="UI/OkBossButton" to="." method="_on_ok_boss_button_pressed"]
+[connection signal="pressed" from="UI/MenuBtn" to="UI/MenuBtn" method="on_button_pressed"]
 
 [editable path="Entities/Entity1"]
 [editable path="Entities/Entity2"]

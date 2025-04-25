@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://tq7nj7tl5xim"]
+[gd_scene load_steps=28 format=3 uid="uid://tq7nj7tl5xim"]
 
 [ext_resource type="Texture2D" uid="uid://5lgjo5ycxxlw" path="res://assets/sprites/backgrounds/background_level2_dialog.png" id="1_1e7uk"]
 [ext_resource type="Script" uid="uid://p2aeq7anuu3p" path="res://scripts/level_two/level_2_manager.gd" id="1_4br1q"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dvssvkssde3uu" path="res://assets/sprites/backgrounds/background_whatgaveitaway.png" id="19_hijyc"]
 [ext_resource type="AudioStream" uid="uid://c4paablie64ki" path="res://assets/sfx/button_press.wav" id="20_qgrtt"]
 [ext_resource type="AudioStream" uid="uid://cekkbgj0yf847" path="res://assets/sfx/robot_text.wav" id="21_14r41"]
+[ext_resource type="Script" uid="uid://c2msqnbwtmkkb" path="res://scripts/main_menu/back_btn.gd" id="22_14r41"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3d04n"]
 
@@ -327,8 +328,16 @@ stream = ExtResource("20_qgrtt")
 stream = ExtResource("21_14r41")
 volume_db = -12.023
 
+[node name="MenuBtn" type="Button" parent="."]
+offset_left = 75.0
+offset_top = 102.0
+offset_right = 151.0
+offset_bottom = 127.0
+script = ExtResource("22_14r41")
+
 [connection signal="pressed" from="UI_Dialog/OkBossButton" to="." method="_on_ok_boss_button_pressed"]
 [connection signal="gui_input" from="UI_Images/ImageRight/TextureRect" to="." method="_on_image_gui_input" binds= [false]]
 [connection signal="gui_input" from="UI_Images/ImageLeft/TextureRect" to="." method="_on_image_gui_input" binds= [true]]
+[connection signal="pressed" from="MenuBtn" to="MenuBtn" method="on_button_pressed"]
 
 [editable path="BossEntity"]

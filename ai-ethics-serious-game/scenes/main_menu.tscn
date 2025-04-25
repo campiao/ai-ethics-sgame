@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://xyu1a31el25c"]
+[gd_scene load_steps=11 format=3 uid="uid://xyu1a31el25c"]
 
 [ext_resource type="Texture2D" uid="uid://beh1tdwmb1ns5" path="res://assets/sprites/backgrounds/esboco.png" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://dyy1d726d4cb1" path="res://scripts/main_menu/game_manager.gd" id="1_wu84c"]
 [ext_resource type="Script" uid="uid://gl8sqqwrxpif" path="res://scripts/main_menu/start_button.gd" id="2_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://d32ep74xjk1p1" path="res://scenes/canvas_layer.tscn" id="3_bqqt6"]
+[ext_resource type="FontFile" uid="uid://c06okaskmctv1" path="res://assets/fonts/Pixel Square Bold10.ttf" id="4_8ln24"]
+[ext_resource type="Texture2D" uid="uid://dgc2jqkcvl68h" path="res://assets/sprites/main_menu/level_1.png" id="5_oa1go"]
+[ext_resource type="Texture2D" uid="uid://b131dqop4qo5a" path="res://assets/sprites/main_menu/level_1_disabled.png" id="6_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://br6cymmfa6viw" path="res://assets/sprites/main_menu/level_2.png" id="7_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://cu7xmlmr3dnnb" path="res://assets/sprites/main_menu/level_2_disabled.png" id="8_5dd4i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu84c"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -11,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wu84c")
 
 [node name="BackgroundImage" type="TextureRect" parent="."]
 layout_mode = 1
@@ -21,15 +30,99 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_l6cm7")
 
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 302.0
-offset_top = 310.0
-offset_right = 507.0
-offset_bottom = 373.0
-text = "START"
-script = ExtResource("2_ekxnf")
-
 [node name="CanvasLayer" parent="." instance=ExtResource("3_bqqt6")]
 
-[connection signal="pressed" from="StartButton" to="StartButton" method="on_button_pressed"]
+[node name="LevelsMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackButton" type="Button" parent="LevelsMenu"]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 554.0
+offset_right = 942.0
+offset_bottom = 595.0
+text = "RETURN"
+
+[node name="Panel" type="Panel" parent="LevelsMenu"]
+material = SubResource("ShaderMaterial_wu84c")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.375
+anchor_top = 6.825
+anchor_right = 23.575
+anchor_bottom = 7.025
+offset_left = -1.52588e-05
+
+[node name="TitleAnswerLabel" type="Label" parent="LevelsMenu"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 300.0
+offset_right = 307.0
+offset_bottom = 327.0
+theme_override_colors/font_color = Color(0.133698, 0.159228, 0.0882251, 1)
+theme_override_fonts/font = ExtResource("4_8ln24")
+theme_override_font_sizes/font_size = 30
+text = "Levels"
+
+[node name="Level1Btn" type="TextureButton" parent="LevelsMenu"]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 353.0
+offset_right = 380.0
+offset_bottom = 481.0
+texture_normal = ExtResource("5_oa1go")
+texture_disabled = ExtResource("6_tbmy8")
+stretch_mode = 0
+
+[node name="Level2Btn" type="TextureButton" parent="LevelsMenu"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 352.0
+offset_right = 564.0
+offset_bottom = 480.0
+texture_normal = ExtResource("7_jk1qb")
+texture_disabled = ExtResource("8_5dd4i")
+stretch_mode = 0
+
+[node name="MainMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 326.0
+offset_right = 644.0
+offset_bottom = 389.0
+text = "NEW GAME"
+script = ExtResource("2_ekxnf")
+
+[node name="ExitButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 492.0
+offset_right = 643.0
+offset_bottom = 555.0
+text = "EXIT
+"
+
+[node name="LevelsButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 409.0
+offset_right = 644.0
+offset_bottom = 472.0
+text = "LEVELS
+"
+
+[connection signal="pressed" from="LevelsMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="LevelsMenu/Level1Btn" to="." method="_on_level_1_btn_pressed"]
+[connection signal="pressed" from="LevelsMenu/Level2Btn" to="." method="_on_level_2_btn_pressed"]
+[connection signal="pressed" from="MainMenu/StartButton" to="MainMenu/StartButton" method="on_button_pressed"]
+[connection signal="pressed" from="MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/LevelsButton" to="." method="_on_levels_button_pressed"]
