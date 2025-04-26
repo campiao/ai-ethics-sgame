@@ -7,6 +7,7 @@ var index : int = 0;
 
 func is_it_over(answer_label: Label):
 	if text.size() == 0:
+		index = 0
 		return
 	else:
 		answer_text = text[index];
@@ -15,3 +16,4 @@ func is_it_over(answer_label: Label):
 		index = index + 1;
 		if index >= text.size():
 			over = true;
+			index = 0

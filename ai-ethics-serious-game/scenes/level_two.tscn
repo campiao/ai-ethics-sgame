@@ -1,7 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://tq7nj7tl5xim"]
+[gd_scene load_steps=30 format=3 uid="uid://tq7nj7tl5xim"]
 
-[ext_resource type="Texture2D" uid="uid://5lgjo5ycxxlw" path="res://assets/sprites/backgrounds/background_level2_dialog.png" id="1_1e7uk"]
 [ext_resource type="Script" uid="uid://p2aeq7anuu3p" path="res://scripts/level_two/level_2_manager.gd" id="1_4br1q"]
+[ext_resource type="Texture2D" uid="uid://gqh8kw7dhiss" path="res://assets/sprites/backgrounds/background_level2_dialog_2.png" id="2_23tvr"]
 [ext_resource type="FontFile" uid="uid://c0rkxsutw6wpa" path="res://assets/fonts/Pixel Square 10.ttf" id="2_ubnpl"]
 [ext_resource type="FontFile" uid="uid://c06okaskmctv1" path="res://assets/fonts/Pixel Square Bold10.ttf" id="3_4br1q"]
 [ext_resource type="Texture2D" uid="uid://cfy3agnxwe5l7" path="res://assets/sprites/okboss_button/okboss_button.tres" id="4_sw5gm"]
@@ -22,6 +22,8 @@
 [ext_resource type="AudioStream" uid="uid://c4paablie64ki" path="res://assets/sfx/button_press.wav" id="20_qgrtt"]
 [ext_resource type="AudioStream" uid="uid://cekkbgj0yf847" path="res://assets/sfx/robot_text.wav" id="21_14r41"]
 [ext_resource type="Script" uid="uid://c2msqnbwtmkkb" path="res://scripts/main_menu/back_btn.gd" id="22_14r41"]
+[ext_resource type="PackedScene" uid="uid://blev1wfj3lj3b" path="res://scenes/post_level_screen.tscn" id="23_8g2v7"]
+[ext_resource type="Texture2D" uid="uid://br2cu6b3nxhpf" path="res://assets/sprites/backgrounds/background_level2_stats_wrong_choice.png" id="24_23tvr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3d04n"]
 
@@ -63,7 +65,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_1e7uk")
+texture = ExtResource("2_23tvr")
 
 [node name="AnswerLabel" type="Label" parent="UI_Dialog"]
 layout_mode = 0
@@ -162,6 +164,7 @@ sprite_frames = SubResource("SpriteFrames_qgrtt")
 autoplay = "default"
 
 [node name="UI_Images" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -242,18 +245,6 @@ theme_override_fonts/font = ExtResource("3_4br1q")
 theme_override_font_sizes/font_size = 20
 text = "EXHIBIT B"
 
-[node name="ProgressLabel" type="Label" parent="UI_Images"]
-layout_mode = 0
-offset_left = 675.0
-offset_top = 108.0
-offset_right = 1001.0
-offset_bottom = 134.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_4br1q")
-theme_override_font_sizes/font_size = 20
-text = "Progress: 0/5"
-vertical_alignment = 1
-
 [node name="TitleImageLeftLabel2" type="Label" parent="UI_Images"]
 layout_mode = 0
 offset_left = 194.0
@@ -305,7 +296,6 @@ texture = ExtResource("17_qgrtt")
 texture = ExtResource("18_14r41")
 
 [node name="ExamineScreen" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -319,6 +309,34 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("19_hijyc")
 
+[node name="ExplanationText" type="Label" parent="ExamineScreen"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 537.0
+offset_right = 756.0
+offset_bottom = 576.0
+theme_override_colors/font_color = Color(0.203922, 0.247059, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "CLICK ON THE SUSPICIOUS AREAS OF THE IMAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ExplanationText2" type="Label" parent="ExamineScreen"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 186.0
+offset_right = 756.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(0.203922, 0.247059, 0.329412, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "WHAT GAVE IT AWAY?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="SFX" type="Node" parent="."]
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="SFX"]
@@ -327,6 +345,79 @@ stream = ExtResource("20_qgrtt")
 [node name="RobotTalk" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("21_14r41")
 volume_db = -12.023
+
+[node name="AI_Images" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="0" type="TextureRect" parent="AI_Images"]
+visible = false
+layout_mode = 0
+offset_left = 403.0
+offset_top = 226.0
+offset_right = 697.0
+offset_bottom = 521.0
+texture = ExtResource("11_05hhi")
+expand_mode = 2
+
+[node name="Control" type="Control" parent="AI_Images/0"]
+anchors_preset = 0
+offset_left = 118.0
+offset_top = 180.0
+offset_right = 178.0
+offset_bottom = 242.0
+mouse_force_pass_scroll_events = false
+
+[node name="1" type="TextureRect" parent="AI_Images"]
+visible = false
+layout_mode = 0
+offset_left = 403.0
+offset_top = 226.0
+offset_right = 697.0
+offset_bottom = 521.0
+texture = ExtResource("14_brhlk")
+expand_mode = 2
+
+[node name="2" type="TextureRect" parent="AI_Images"]
+visible = false
+layout_mode = 0
+offset_left = 403.0
+offset_top = 226.0
+offset_right = 697.0
+offset_bottom = 521.0
+texture = ExtResource("16_dbtcm")
+expand_mode = 2
+
+[node name="3" type="TextureRect" parent="AI_Images"]
+visible = false
+layout_mode = 0
+offset_left = 403.0
+offset_top = 226.0
+offset_right = 697.0
+offset_bottom = 521.0
+texture = ExtResource("18_14r41")
+expand_mode = 2
+
+[node name="PostLevelScreen" parent="." instance=ExtResource("23_8g2v7")]
+visible = false
+success_path = "uid://xyu1a31el25c"
+failure_path = "uid://xyu1a31el25c"
+
+[node name="TextureRect" parent="PostLevelScreen" index="0"]
+texture = ExtResource("24_23tvr")
+
+[node name="ProgressLabel" type="Label" parent="."]
+offset_left = 675.0
+offset_top = 108.0
+offset_right = 1001.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "Progress: 0/5"
+vertical_alignment = 1
 
 [node name="MenuBtn" type="Button" parent="."]
 offset_left = 75.0
@@ -338,6 +429,12 @@ script = ExtResource("22_14r41")
 [connection signal="pressed" from="UI_Dialog/OkBossButton" to="." method="_on_ok_boss_button_pressed"]
 [connection signal="gui_input" from="UI_Images/ImageRight/TextureRect" to="." method="_on_image_gui_input" binds= [false]]
 [connection signal="gui_input" from="UI_Images/ImageLeft/TextureRect" to="." method="_on_image_gui_input" binds= [true]]
+[connection signal="gui_input" from="AI_Images/0" to="." method="_on_ai_image_missed_feature"]
+[connection signal="gui_input" from="AI_Images/0/Control" to="." method="_on_poi_clicked"]
+[connection signal="gui_input" from="AI_Images/1" to="." method="_on_ai_image_missed_feature"]
+[connection signal="gui_input" from="AI_Images/2" to="." method="_on_ai_image_missed_feature"]
+[connection signal="gui_input" from="AI_Images/3" to="." method="_on_ai_image_missed_feature"]
 [connection signal="pressed" from="MenuBtn" to="MenuBtn" method="on_button_pressed"]
 
 [editable path="BossEntity"]
+[editable path="PostLevelScreen"]

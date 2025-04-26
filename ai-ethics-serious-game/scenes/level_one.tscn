@@ -586,6 +586,8 @@ good_ending_text = "Congratulations, your score met our minimum standards! Your 
 As a reward, you have been promoted! Ahead lies a new challenge :)"
 bad_ending_text = "Oh no, you seem to have performed really badly!
 However, we will give you another chance to prove your worth. Do not dissapoint us again..."
+success_path = "uid://tq7nj7tl5xim"
+failure_path = "uid://1yd6cqf4yvpg"
 
 [node name="SFX" type="Node" parent="."]
 

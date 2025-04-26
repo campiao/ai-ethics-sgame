@@ -10,6 +10,9 @@ extends Control
 @export_multiline var good_ending_text := ""
 @export_multiline var bad_ending_text := ""
 
+@export_file var success_path := ""
+@export_file var failure_path := ""
+
 var current_id := -1
 var num_text_remaining := -1
 
@@ -47,14 +50,15 @@ func set_stats_results(score_result, num_entities : int) -> void:
 	# TODO: add perfect and missed choice stats
 	score_value = score_result
 	entities_count = num_entities
-	error_percentage = 1.0 - float(num_entities*2 - score_value)/(num_entities*2)
+	error_percentage = float(entities_count*2 - score_value)/float(entities_count*2)
+	print(error_percentage)
 	set_text_to_display()
 	
 func set_text_to_display() -> void:
 	text_correct_guesses.text = "Total score: "+str(score_value) + \
 								"/"+str(entities_count * 2)
 	text_error_percentage.text = "Percentage of total possible score: "+ \
-								str(error_percentage*100) + "%"
+								str((1.0-error_percentage)*100) + "%"
 	if error_percentage > 0.71:
 		text_end_level.text = bad_ending_text
 	else:
@@ -67,6 +71,6 @@ func _on_gui_input(event: InputEvent) -> void:
 			# NOTE: check for success, change to corresponding scene!
 			if error_percentage > 0.71:
 				StaticData.entities_dict = StaticData.load_json_file("res://resources/entities_data_v2_2.json")
-				get_tree().change_scene_to_file("res://scenes/level_one.tscn")
+				get_tree().change_scene_to_file(failure_path)
 			else:
-				get_tree().change_scene_to_file("res://scenes/level_two.tscn")
+				get_tree().change_scene_to_file(success_path)

@@ -81,6 +81,7 @@ func _ready() -> void:
 						
 	answer_label.visible_ratio = 0.0
 	question_label.visible_ratio = 0.0
+	progress_label.visible = false
 	boss_entity.text = first_level_text
 	set_entities_data()
 	show_tutorial()
