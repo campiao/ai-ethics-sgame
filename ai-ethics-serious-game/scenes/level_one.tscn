@@ -517,9 +517,9 @@ texture_hover = SubResource("AtlasTexture_5cok0")
 [node name="HSlider" type="HSlider" parent="UI"]
 layout_mode = 0
 offset_left = 176.0
-offset_top = 571.0
+offset_top = 576.0
 offset_right = 355.0
-offset_bottom = 603.0
+offset_bottom = 608.0
 rotation = -1.57079
 theme_override_icons/grabber = ExtResource("11_rqtnr")
 theme_override_icons/grabber_highlight = ExtResource("11_rqtnr")
@@ -535,6 +535,34 @@ offset_top = 102.0
 offset_right = 151.0
 offset_bottom = 127.0
 script = ExtResource("11_t3lbx")
+
+[node name="TitleQuestionLabel2" type="Label" parent="UI"]
+offset_left = 87.0
+offset_top = 377.0
+offset_right = 299.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.827451, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_843q2")
+theme_override_font_sizes/font_size = 20
+text = "HIGH CONFIDENCE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleQuestionLabel3" type="Label" parent="UI"]
+offset_left = 87.0
+offset_top = 582.0
+offset_right = 299.0
+offset_bottom = 605.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.717647, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_843q2")
+theme_override_font_sizes/font_size = 20
+text = "LOW CONFIDENCE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Entities" type="Node2D" parent="."]
 visible = false

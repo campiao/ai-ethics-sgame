@@ -51,9 +51,9 @@ var correct_choice_flavor := [
 	"Correct! I am proud of you.",
 ]
 var wrong_choice_flavor := [
-	"That's not correct, check above to see why!",
+	"That's not correct! Good luck on the next one.",
 	"Wrong! It's okay, you will get it the next time!",
-	"Incorrect option! Let me tell you why...",
+	"Incorrect option! Please focus.",
 ]
 
 var first_level_text := [

@@ -568,6 +568,10 @@ expand_mode = 1
 
 [node name="PostLevelScreen" parent="." instance=ExtResource("23_8g2v7")]
 visible = false
+good_ending_text = "Congratulations, you had a good error rate!
+You get to keep your job one more day. Your keen eye ensures AI generated images do not misslead us! :)"
+bad_ending_text = "Oh no, you seem to have performed really badly!
+For this reason, we are choosing to terminate your contract and replacing you with an AI..."
 success_path = "uid://xyu1a31el25c"
 failure_path = "uid://xyu1a31el25c"
 
@@ -609,6 +613,33 @@ offset_top = 102.0
 offset_right = 151.0
 offset_bottom = 127.0
 script = ExtResource("22_14r41")
+
+[node name="TitleRememberLabel" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 537.0
+offset_right = 178.0
+offset_bottom = 563.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4br1q")
+theme_override_font_sizes/font_size = 20
+text = "Remember"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RememberText" type="Label" parent="."]
+offset_left = 33.0
+offset_top = 562.0
+offset_right = 189.0
+offset_bottom = 654.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ubnpl")
+theme_override_font_sizes/font_size = 10
+text = "- Extra hands are suspicious.
+- Lighting must match real life expectiations.
+
+
+You got this :)"
+autowrap_mode = 3
 
 [connection signal="pressed" from="UI_Dialog/OkBossButton" to="." method="_on_ok_boss_button_pressed"]
 [connection signal="gui_input" from="UI_Images/ImageRight/TextureRect" to="." method="_on_image_gui_input" binds= [false]]
