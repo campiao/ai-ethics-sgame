@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://tq7nj7tl5xim"]
+[gd_scene load_steps=31 format=3 uid="uid://tq7nj7tl5xim"]
 
 [ext_resource type="Script" uid="uid://p2aeq7anuu3p" path="res://scripts/level_two/level_2_manager.gd" id="1_4br1q"]
 [ext_resource type="Texture2D" uid="uid://gqh8kw7dhiss" path="res://assets/sprites/backgrounds/background_level2_dialog_2.png" id="2_23tvr"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://c4paablie64ki" path="res://assets/sfx/button_press.wav" id="20_qgrtt"]
 [ext_resource type="AudioStream" uid="uid://cekkbgj0yf847" path="res://assets/sfx/robot_text.wav" id="21_14r41"]
 [ext_resource type="Script" uid="uid://c2msqnbwtmkkb" path="res://scripts/main_menu/back_btn.gd" id="22_14r41"]
+[ext_resource type="Texture2D" uid="uid://bfdd2e6vngx0k" path="res://assets/sprites/red_circle.png" id="22_24f5u"]
 [ext_resource type="PackedScene" uid="uid://blev1wfj3lj3b" path="res://scenes/post_level_screen.tscn" id="23_8g2v7"]
 [ext_resource type="Texture2D" uid="uid://br2cu6b3nxhpf" path="res://assets/sprites/backgrounds/background_level2_stats_wrong_choice.png" id="24_23tvr"]
 
@@ -363,12 +364,24 @@ texture = ExtResource("11_05hhi")
 expand_mode = 2
 
 [node name="Control" type="Control" parent="AI_Images/0"]
-anchors_preset = 0
-offset_left = 118.0
-offset_top = 180.0
-offset_right = 178.0
-offset_bottom = 242.0
+layout_mode = 1
+anchor_left = 0.4
+anchor_top = 0.61
+anchor_right = 0.603
+anchor_bottom = 0.82
+offset_top = 0.0500031
+offset_right = 0.11499
+offset_bottom = 0.0999908
 mouse_force_pass_scroll_events = false
+
+[node name="circle" type="TextureRect" parent="AI_Images/0/Control"]
+visible = false
+layout_mode = 0
+offset_right = 61.0
+offset_bottom = 62.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Control2" type="Control" parent="AI_Images/0"]
 layout_mode = 3
@@ -378,6 +391,16 @@ offset_top = 20.0
 offset_right = 160.0
 offset_bottom = 108.0
 mouse_force_pass_scroll_events = false
+
+[node name="circle" type="TextureRect" parent="AI_Images/0/Control2"]
+visible = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = 11.0
+offset_right = 35.0
+offset_bottom = 73.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
 
 [node name="1" type="TextureRect" parent="AI_Images"]
 visible = false
@@ -398,6 +421,15 @@ offset_right = 290.0
 offset_bottom = 191.0
 mouse_force_pass_scroll_events = false
 
+[node name="circle" type="TextureRect" parent="AI_Images/1/Control"]
+visible = false
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 49.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Control2" type="Control" parent="AI_Images/1"]
 layout_mode = 3
 anchors_preset = 0
@@ -407,6 +439,16 @@ offset_right = 219.0
 offset_bottom = 108.0
 mouse_force_pass_scroll_events = false
 
+[node name="circle" type="TextureRect" parent="AI_Images/1/Control2"]
+visible = false
+layout_mode = 0
+offset_left = -14.0
+offset_top = -5.0
+offset_right = 47.0
+offset_bottom = 28.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
+
 [node name="Control3" type="Control" parent="AI_Images/1"]
 layout_mode = 3
 anchors_preset = 0
@@ -415,6 +457,16 @@ offset_top = 70.0
 offset_right = 126.0
 offset_bottom = 94.0
 mouse_force_pass_scroll_events = false
+
+[node name="circle" type="TextureRect" parent="AI_Images/1/Control3"]
+visible = false
+layout_mode = 0
+offset_left = -14.0
+offset_top = -5.0
+offset_right = 47.0
+offset_bottom = 28.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
 
 [node name="2" type="TextureRect" parent="AI_Images"]
 visible = false
@@ -435,6 +487,16 @@ offset_right = 70.0
 offset_bottom = 229.0
 mouse_force_pass_scroll_events = false
 
+[node name="circle" type="TextureRect" parent="AI_Images/2/Control"]
+visible = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = -4.0
+offset_right = 53.0
+offset_bottom = 49.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
+
 [node name="Control2" type="Control" parent="AI_Images/2"]
 layout_mode = 3
 anchors_preset = 0
@@ -443,6 +505,17 @@ offset_top = 133.0
 offset_right = 294.0
 offset_bottom = 195.0
 mouse_force_pass_scroll_events = false
+
+[node name="circle" type="TextureRect" parent="AI_Images/2/Control2"]
+visible = false
+layout_mode = 0
+offset_left = -14.0
+offset_top = -5.0
+offset_right = 97.0
+offset_bottom = 77.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="3" type="TextureRect" parent="AI_Images"]
 visible = false
@@ -463,6 +536,17 @@ offset_right = 139.0
 offset_bottom = 141.0
 mouse_force_pass_scroll_events = false
 
+[node name="circle" type="TextureRect" parent="AI_Images/3/Control"]
+visible = false
+layout_mode = 0
+offset_left = -14.0
+offset_top = -5.0
+offset_right = 101.0
+offset_bottom = 87.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Control2" type="Control" parent="AI_Images/3"]
 layout_mode = 3
 anchors_preset = 0
@@ -471,6 +555,16 @@ offset_top = 18.0
 offset_right = 293.0
 offset_bottom = 230.0
 mouse_force_pass_scroll_events = false
+
+[node name="circle" type="TextureRect" parent="AI_Images/3/Control2"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 100.0
+offset_bottom = 203.0
+texture = ExtResource("22_24f5u")
+expand_mode = 1
 
 [node name="PostLevelScreen" parent="." instance=ExtResource("23_8g2v7")]
 visible = false

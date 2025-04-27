@@ -205,11 +205,11 @@ func clicked_on_wrong_image() -> void:
 func advance_to_boss_screen() -> void:
 	main_level.visible = false
 	
-
+var images
 func advance_to_examine_screen() -> void:
 	examine_screen.visible = true
 	$AI_Images.visible = true
-	var images := $AI_Images.get_children()
+	images = $AI_Images.get_children()
 	for image in images:
 		image.visible = false
 	images[current_image_id].visible = true
@@ -250,10 +250,14 @@ func _on_poi_clicked(event: InputEvent) -> void:
 		is_poi_clickec = false
 		return
 	if event.is_action("left_mouse_btn_clicked"):
+		
+		var local_pos = images[current_image_id].get_local_mouse_position()
+		var node_clicado = get_node_at_position(local_pos)
+		if node_clicado:
+			(node_clicado.get_children())[0].visible = true
+		
 		score += 1
 		score_in_image += 1;
-		var clicked_button = get_parent()  # Acessa o node pai, neste caso, o botão.
-		print("Botão clicado: ", clicked_button.name)  # Exibe o nome do botão clicado
 		is_poi_clickec = true
 		if score_in_image >= num_total_attempts:
 			await set_examination_text(0)
@@ -271,3 +275,10 @@ func set_examination_text(index : int) -> void:
 	# Wait for some 1 sec before changing
 	await get_tree().create_timer(2).timeout
 	end_exam_label.text = "";
+	
+# Função para obter o nó na posição do mouse (para nós de controle)
+func get_node_at_position(position):
+	for child in images[current_image_id].get_children():
+		if child.get_rect().has_point(position):
+			return child;
+	return null
