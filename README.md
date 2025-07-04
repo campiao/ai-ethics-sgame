@@ -1,6 +1,9 @@
 # AI Gateway
 
-An ethical game about the use of AI built in the Godot Game Engine. Learn about the impact of trusting AI decision in critical situations, and common signs that an image was generated using generative AI tools.
+An ethical game about the use of AI built in the Godot Game Engine. Learn about the impact of trusting AI decision in critical situations, and common signs that an image was generated using generative AI tools!
+
+|![Level one](screenshots/level_one.png)|![Level two](screenshots/level_two.png)|
+| - |-|
 
 ## Installing
 
@@ -9,6 +12,8 @@ Clone this repository using:
 git clone https://github.com/campiao/ai-ethics-sgame.git
 ```
 Then open the project in Godot and you are good to go!
+
+Alternatively, download the executable from the Releases section.
 
 ## Playing the game
 
